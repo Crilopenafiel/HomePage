@@ -599,54 +599,102 @@
           
           
 
+  <<!-- Contact Section -->
+<section id="contact" class="contact py-5">
   <div class="container">
-    <p>🌐 Website (<a href="https://cristianlopez.au" target="_blank">cristianlopez.au</a>)</p>
-  </div>
-</div>
 
-              
+    <div class="section-title">
+      <h2>Contact Me!</h2>
+      <p>🌐 Website (<a href="https://cristianlopez.au" target="_blank">cristianlopez.au</a>)</p>
+    </div>
 
-              
+    <div class="row">
 
-          </div>
-<form
-  action="mailto:crilocl@gmail.com"
-  method="post"
-  enctype="text/plain"
->
-          <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-              <div class="row">
-                <div class="form-group col-md-6">
-                  <label for="name">Your Name</label>
-                  <input type="text" name="name" class="form-control" id="name" required>
-                </div>
-                <div class="form-group col-md-6">
-                  <label for="name">Your Email</label>
-                  <input type="email" class="form-control" name="email" id="email" required>
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="name">Subject</label>
-                <input type="text" class="form-control" name="subject" id="subject" required>
-              </div>
-              <div class="form-group">
-                <label for="name">Message</label>
-                <textarea class="form-control" name="message" rows="10" required></textarea>
-              </div>
-              <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-              </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
-            </form>
+      <!-- Form Column -->
+      <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
+        <form
+          action="mailto:crilocl@gmail.com"
+          method="post"
+          enctype="text/plain"
+          role="form"
+          class="php-email-form w-100"
+        >
+          <div class="row">
+            <div class="form-group col-md-6">
+              <label for="name">Your Name</label>
+              <input
+                type="text"
+                name="name"
+                class="form-control"
+                id="name"
+                required
+              />
+            </div>
+            <div class="form-group col-md-6">
+              <label for="email">Your Email</label>
+              <input
+                type="email"
+                name="email"
+                class="form-control"
+                id="email"
+                required
+              />
+            </div>
           </div>
 
-        </div>
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input
+              type="text"
+              name="subject"
+              class="form-control"
+              id="subject"
+              required
+            />
+          </div>
 
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea
+              name="message"
+              class="form-control"
+              id="message"
+              rows="6"
+              required
+            ></textarea>
+          </div>
+
+          <div class="my-3">
+            <div class="loading">Loading</div>
+            <div class="error-message"></div>
+            <div class="sent-message">Your message has been sent. Thank you!</div>
+          </div>
+
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary">
+              Send Message
+            </button>
+          </div>
+        </form>
       </div>
-    </section><!-- End Contact Section -->
+
+      <!-- Optional: Contact Info Column -->
+      <div class="col-lg-5 d-flex align-items-stretch">
+        <div class="info">
+          <div class="email">
+            <i class="bi bi-envelope"></i>
+            <h4>Email:</h4>
+            <p>crilocl@gmail.com</p>
+          </div>
+         
+          </div>
+          <!-- add other info blocks here -->
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
   </main><!-- End #main -->
 

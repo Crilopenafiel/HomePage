@@ -352,165 +352,190 @@
 
     <section id="map">
   <!-- tu mapa aquí -->
-<!-- 1. Include Leaflet CSS in your <head> -->
-<link
-  rel="stylesheet"
-  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-  integrity="sha512-Zcn6bjR/8RZbLEpLIeOwNtzREBAJnUKESxces60Mpoj+2okopSAcSUIUOseddDm0cxnGQzxIR7vJgsLZbdLE3w=="
-  crossorigin=""
-/>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>World Map</title>
 
-<!-- 2. World Map Section -->
-<section id="map" class="py-5">
-  <div class="container">
-    <h2>World Map</h2>
-    <div id="worldmap" style="height: 500px; width: 100%;"></div>
-  </div>
-</section>
+  <!-- Leaflet CSS -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha512-Zcn6bjR/8RZbLEpLIeOwNtzREBAJnUKESxces60Mpoj+2okopSAcSUIUOseddDm0cxnGQzxIR7vJgsLZbdLE3w=="
+    crossorigin=""
+  />
 
-<!-- 3. Include Leaflet JS just before your own script -->
-<script
-  src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-  integrity="sha512-BwHfrr4c9kmRkLw6iXFdzcdWV/PGkVgiIyIWLLlTSXzWQzxuSg4DiQUCpauz/EWjgk5TYQqX/kvn9pG1NpYfqg=="
-  crossorigin=""
-></script>
-
-<!-- 4. Map Initialization + Tooltips -->
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const cityNotes = [
-    {
-      coords: [-27.4679, 153.0281],
-      title: 'Brisbane, Australia',
-      desc: 'Queensland capital and mining hub',
-      activity: 'Senior Manager, Digital Analytics & OT (Glencore)',
-      img: 'assets/img/brisbane.jpg',
-      paragraph: 'I lead digital transformation and asset optimization at Glencore.'
-    },
-    {
-      coords: [-37.8136, 144.9631],
-      title: 'Melbourne, Australia',
-      desc: 'Technology and innovation center',
-      activity: 'Product Manager (Tiger Spider)',
-      img: 'assets/img/melbourne.jpg',
-      paragraph: 'I managed the Tiger Spider Web platform and SaaS logistics solutions.'
-    },
-    {
-      coords: [-33.4489, -70.6693],
-      title: 'Santiago, Chile',
-      desc: 'Codelco corporate headquarters',
-      activity: 'Corporate Director of Digital Transformation',
-      img: 'assets/img/santiago.jpg',
-      paragraph: 'I implemented prescriptive AI models at Codelco, boosting copper grade by 9.7% and built a COVID-19 geofencing app.'
-    },
-    {
-      coords: [-34.1708, -70.7395],
-      title: 'Rancagua, Chile',
-      desc: 'El Teniente operations headquarters',
-      activity: 'Director of Innovation (Codelco El Teniente)',
-      img: 'assets/img/rancagua.jpg',
-      paragraph: 'I led Data Science and Governance at El Teniente, deploying prescriptive AI and asset automation.'
-    },
-    {
-      coords: [-23.65, -70.4],
-      title: 'Antofagasta, Chile',
-      desc: 'Key port city in mining',
-      activity: 'Mining & Process Engineer (Antofagasta PLC)',
-      img: 'assets/img/antofagasta.jpg',
-      paragraph: 'At Minera Michilla, I designed dispatch and truck-fleet simulations to optimize planning and grade control.'
+  <style>
+    /* Map container */
+    #worldmap {
+      height: 500px;
+      width: 100%;
     }
-  ];
 
-  // initialize map
-  const map = L.map('worldmap').setView([0, 20], 2);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; OpenStreetMap contributors',
-    maxZoom: 18
-  }).addTo(map);
+    /* Tooltip override */
+    .city-tooltip .leaflet-tooltip-content {
+      padding: 0;
+      background: transparent;
+      border: none;
+    }
 
-  // add markers + tooltips
-  cityNotes.forEach(({ coords, title, desc, activity, img, paragraph }) => {
-    const marker = L.marker(coords).addTo(map);
-    const tooltipHtml = `
-      <div class="city-tooltip-content">
-        <img src="${img}" alt="${title}" />
-        <div class="city-tooltip-text">
-          <strong>${title}</strong>
-          <em>${desc}</em>
-          <span>${activity}</span>
-          <p>${paragraph}</p>
-        </div>
-      </div>
-    `;
-    marker.bindTooltip(tooltipHtml, {
-      direction: 'top',
-      offset: [0, -12],
-      className: 'city-tooltip',
-      opacity: 0.98
+    /* Tooltip box */
+    .city-tooltip-content {
+      display: flex;
+      width: 320px;
+      background: #fff;
+      border: 2px solid #007bff;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+
+    /* Thumbnail */
+    .city-tooltip-content img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+    }
+
+    /* Text area */
+    .city-tooltip-text {
+      padding: 10px;
+      margin-left: 8px;
+      font-family: Arial, sans-serif;
+      color: #333;
+      line-height: 1.4;
+      white-space: normal;
+      text-align: left; /* ensure text aligns to left margin */
+    }
+
+    .city-tooltip-text strong {
+      display: block;
+      font-size: 1.1em;
+      margin-bottom: 4px;
+    }
+
+    .city-tooltip-text em {
+      display: block;
+      font-size: 0.85em;
+      color: #555;
+      margin-bottom: 6px;
+    }
+
+    .city-tooltip-text span {
+      display: block;
+      font-size: 0.9em;
+      margin-bottom: 6px;
+    }
+
+    .city-tooltip-text p {
+      margin: 0;
+      font-size: 0.85em;
+    }
+
+    /* ensure tooltips are on top */
+    .leaflet-tooltip-pane {
+      z-index: 10000;
+    }
+  </style>
+</head>
+<body>
+
+  <section id="map" class="py-5">
+    <div class="container">
+      <h2>World Map</h2>
+      <div id="worldmap"></div>
+    </div>
+  </section>
+
+  <!-- Leaflet JS -->
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha512-BwHfrr4c9kmRkLw6iXFdzcdWV/PGkVgiIyIWLLlTSXzWQzxuSg4DiQUCpauz/EWjgk5TYQqX/kvn9pG1NpYfqg=="
+    crossorigin=""
+  ></script>
+
+  <!-- Initialization Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const cityNotes = [
+        {
+          coords: [-27.4679, 153.0281],
+          title: 'Brisbane, Australia',
+          desc: 'Queensland capital and mining hub',
+          activity: 'Senior Manager, Digital Analytics & OT (Glencore)',
+          img: 'assets/img/brisbane.jpg',
+          paragraph: 'I lead digital transformation and asset optimization at Glencore.'
+        },
+        {
+          coords: [-37.8136, 144.9631],
+          title: 'Melbourne, Australia',
+          desc: 'Technology and innovation center',
+          activity: 'Product Manager (Tiger Spider)',
+          img: 'assets/img/melbourne.jpg',
+          paragraph: 'I managed the Tiger Spider Web platform and SaaS logistics solutions.'
+        },
+        {
+          coords: [-33.4489, -70.6693],
+          title: 'Santiago, Chile',
+          desc: 'Codelco corporate headquarters',
+          activity: 'Corporate Director of Digital Transformation',
+          img: 'assets/img/santiago.jpg',
+          paragraph: 'I implemented prescriptive AI models at Codelco, boosting copper grade by 9.7% and built a COVID-19 geofencing app.'
+        },
+        {
+          coords: [-34.1708, -70.7395],
+          title: 'Rancagua, Chile',
+          desc: 'El Teniente operations headquarters',
+          activity: 'Director of Innovation (Codelco El Teniente)',
+          img: 'assets/img/rancagua.jpg',
+          paragraph: 'I led Data Science and Governance at El Teniente, deploying prescriptive AI and asset automation.'
+        },
+        {
+          coords: [-23.65, -70.4],
+          title: 'Antofagasta, Chile',
+          desc: 'Key port city in mining',
+          activity: 'Mining & Process Engineer (Antofagasta PLC)',
+          img: 'assets/img/antofagasta.jpg',
+          paragraph: 'At Minera Michilla, I designed dispatch and truck-fleet simulations to optimize planning and grade control.'
+        }
+      ];
+
+      const map = L.map('worldmap').setView([0, 20], 2);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors',
+        maxZoom: 18
+      }).addTo(map);
+
+      cityNotes.forEach(({ coords, title, desc, activity, img, paragraph }) => {
+        const marker = L.marker(coords).addTo(map);
+        const tooltipHtml = `
+          <div class="city-tooltip-content">
+            <img src="${img}" alt="${title}" />
+            <div class="city-tooltip-text">
+              <strong>${title}</strong>
+              <em>${desc}</em>
+              <span>${activity}</span>
+              <p>${paragraph}</p>
+            </div>
+          </div>
+        `;
+        marker.bindTooltip(tooltipHtml, {
+          direction: 'top',
+          offset: [0, -15],
+          className: 'city-tooltip',
+          opacity: 0.98
+        });
+        marker.on('mouseover', () => marker.openTooltip());
+        marker.on('mouseout', () => marker.closeTooltip());
+      });
     });
-    marker.on('mouseover', () => marker.openTooltip());
-    marker.on('mouseout',  () => marker.closeTooltip());
-  });
-});
-</script>
+  </script>
+</body>
+</html>
 
-<!-- 5. Tooltip Styles (place in your styles.css or below) -->
-<style>
-.city-tooltip .leaflet-tooltip-content {
-  padding: 0;
-  background: transparent;
-  border: none;
-}
 
-.city-tooltip-content {
-  display: flex;
-  width: 320px;             /* fixed width so text wraps nicely */
-  background: #fff;
-  border: 2px solid #007bff;
-  border-radius: 6px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-}
-
-.city-tooltip-content img {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
-}
-
-.city-tooltip-text {
-  padding: 10px;
-  font-family: Arial, sans-serif;
-  color: #333;
-  line-height: 1.3;
-}
-
-.city-tooltip-text strong {
-  display: block;
-  font-size: 1.1em;
-  margin-bottom: 4px;
-}
-
-.city-tooltip-text em {
-  display: block;
-  font-size: 0.85em;
-  color: #555;
-  margin-bottom: 6px;
-}
-
-.city-tooltip-text span {
-  display: block;
-  font-size: 0.9em;
-  margin-bottom: 6px;
-}
-
-.city-tooltip-text p {
-  margin: 0;
-  font-size: 0.85em;
-  white-space: normal;
-}
-</style>
 
 
 </style>

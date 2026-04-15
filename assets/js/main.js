@@ -1,256 +1,262 @@
-/**
-* Template Name: iPortfolio - v3.1.0
-* Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
-(function() {
-  "use strict";
+/* ================================================================
+   main.js — Navigation, Particles, Counters, Scroll Animations
+   ================================================================ */
 
-  /**
-   * Easy selector helper function
-   */
-  const select = (el, all = false) => {
-    el = el.trim()
-    if (all) {
-      return [...document.querySelectorAll(el)]
-    } else {
-      return document.querySelector(el)
-    }
+(function () {
+  'use strict';
+
+  /* ----------------------------------------------------------------
+     Utility
+  ---------------------------------------------------------------- */
+  const $  = (sel, ctx = document) => ctx.querySelector(sel);
+  const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ----------------------------------------------------------------
+     Footer year
+  ---------------------------------------------------------------- */
+  const yearEl = $('#footer-year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  /* ----------------------------------------------------------------
+     Navigation — scroll state + hamburger + scrollspy
+  ---------------------------------------------------------------- */
+  const navbar   = $('#navbar');
+  const hamburger = $('.nav-hamburger');
+  const navLinks  = $('#nav-links');
+  const allNavLinks = $$('.nav-links a');
+
+  // Add background when scrolled
+  function onNavScroll() {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+    // Back to top button
+    const btt = $('#back-to-top');
+    if (btt) btt.classList.toggle('visible', window.scrollY > 400);
   }
+  window.addEventListener('scroll', onNavScroll, { passive: true });
+  onNavScroll();
 
-  /**
-   * Easy event listener function
-   */
-  const on = (type, el, listener, all = false) => {
-    let selectEl = select(el, all)
-    if (selectEl) {
-      if (all) {
-        selectEl.forEach(e => e.addEventListener(type, listener))
-      } else {
-        selectEl.addEventListener(type, listener)
+  // Hamburger toggle
+  if (hamburger) {
+    hamburger.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      hamburger.classList.toggle('open', open);
+      hamburger.setAttribute('aria-expanded', String(open));
+    });
+    // Close on link click
+    navLinks.addEventListener('click', e => {
+      if (e.target.tagName === 'A') {
+        navLinks.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
       }
-    }
-  }
-
-  /**
-   * Easy on scroll event listener 
-   */
-  const onscroll = (el, listener) => {
-    el.addEventListener('scroll', listener)
-  }
-
-  /**
-   * Navbar links active state on scroll
-   */
-  let navbarlinks = select('#navbar .scrollto', true)
-  const navbarlinksActive = () => {
-    let position = window.scrollY + 200
-    navbarlinks.forEach(navbarlink => {
-      if (!navbarlink.hash) return
-      let section = select(navbarlink.hash)
-      if (!section) return
-      if (position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
-        navbarlink.classList.add('active')
-      } else {
-        navbarlink.classList.remove('active')
-      }
-    })
-  }
-  window.addEventListener('load', navbarlinksActive)
-  onscroll(document, navbarlinksActive)
-
-  /**
-   * Scrolls to an element with header offset
-   */
-  const scrollto = (el) => {
-    let elementPos = select(el).offsetTop
-    window.scrollTo({
-      top: elementPos,
-      behavior: 'smooth'
-    })
-  }
-
-  /**
-   * Back to top button
-   */
-  let backtotop = select('.back-to-top')
-  if (backtotop) {
-    const toggleBacktotop = () => {
-      if (window.scrollY > 100) {
-        backtotop.classList.add('active')
-      } else {
-        backtotop.classList.remove('active')
-      }
-    }
-    window.addEventListener('load', toggleBacktotop)
-    onscroll(document, toggleBacktotop)
-  }
-
-  /**
-   * Mobile nav toggle
-   */
-  on('click', '.mobile-nav-toggle', function(e) {
-    select('body').classList.toggle('mobile-nav-active')
-    this.classList.toggle('bi-list')
-    this.classList.toggle('bi-x')
-  })
-
-  /**
-   * Scrool with ofset on links with a class name .scrollto
-   */
-  on('click', '.scrollto', function(e) {
-    if (select(this.hash)) {
-      e.preventDefault()
-
-      let body = select('body')
-      if (body.classList.contains('mobile-nav-active')) {
-        body.classList.remove('mobile-nav-active')
-        let navbarToggle = select('.mobile-nav-toggle')
-        navbarToggle.classList.toggle('bi-list')
-        navbarToggle.classList.toggle('bi-x')
-      }
-      scrollto(this.hash)
-    }
-  }, true)
-
-  /**
-   * Scroll with ofset on page load with hash links in the url
-   */
-  window.addEventListener('load', () => {
-    if (window.location.hash) {
-      if (select(window.location.hash)) {
-        scrollto(window.location.hash)
-      }
-    }
-  });
-
-  /**
-   * Hero type effect
-   */
-  const typed = select('.typed')
-  if (typed) {
-    let typed_strings = typed.getAttribute('data-typed-items')
-    typed_strings = typed_strings.split(',')
-    new Typed('.typed', {
-      strings: typed_strings,
-      loop: true,
-      typeSpeed: 100,
-      backSpeed: 50,
-      backDelay: 2000
     });
   }
 
-  /**
-   * Skills animation
-   */
-  let skilsContent = select('.skills-content');
-  if (skilsContent) {
-    new Waypoint({
-      element: skilsContent,
-      offset: '80%',
-      handler: function(direction) {
-        let progress = select('.progress .progress-bar', true);
-        progress.forEach((el) => {
-          el.style.width = el.getAttribute('aria-valuenow') + '%'
-        });
-      }
-    })
+  // Scrollspy — highlight active nav link
+  const sections = $$('section[id]');
+  const sectionOffsets = [];
+
+  function buildOffsets() {
+    sectionOffsets.length = 0;
+    sections.forEach(sec => {
+      sectionOffsets.push({ id: sec.id, top: sec.offsetTop - 120 });
+    });
   }
 
-  /**
-   * Porfolio isotope and filter
-   */
-  window.addEventListener('load', () => {
-    let portfolioContainer = select('.portfolio-container');
-    if (portfolioContainer) {
-      let portfolioIsotope = new Isotope(portfolioContainer, {
-        itemSelector: '.portfolio-item'
+  function scrollSpy() {
+    const y = window.scrollY;
+    let current = '';
+    sectionOffsets.forEach(s => { if (y >= s.top) current = s.id; });
+    allNavLinks.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  }
+
+  window.addEventListener('load', () => { buildOffsets(); scrollSpy(); });
+  window.addEventListener('scroll', scrollSpy, { passive: true });
+  window.addEventListener('resize', buildOffsets, { passive: true });
+
+  /* ----------------------------------------------------------------
+     AOS — Animate On Scroll (custom IntersectionObserver)
+  ---------------------------------------------------------------- */
+  if (!prefersReducedMotion) {
+    const aosObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('aos-visible');
+          aosObserver.unobserve(entry.target);
+        }
       });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
-      let portfolioFilters = select('#portfolio-flters li', true);
+    $$('[data-aos]').forEach(el => aosObserver.observe(el));
+  } else {
+    // Show everything immediately if reduced motion preferred
+    $$('[data-aos]').forEach(el => el.classList.add('aos-visible'));
+  }
 
-      on('click', '#portfolio-flters li', function(e) {
-        e.preventDefault();
-        portfolioFilters.forEach(function(el) {
-          el.classList.remove('filter-active');
-        });
-        this.classList.add('filter-active');
+  /* ----------------------------------------------------------------
+     Stat Counters
+  ---------------------------------------------------------------- */
+  function animateCount(el) {
+    const target  = parseInt(el.dataset.count, 10);
+    const prefix  = el.dataset.prefix || '';
+    const suffix  = el.dataset.suffix || '';
+    const duration = 1800;
+    const startTime = performance.now();
 
-        portfolioIsotope.arrange({
-          filter: this.getAttribute('data-filter')
-        });
-        portfolioIsotope.on('arrangeComplete', function() {
-          AOS.refresh()
-        });
-      }, true);
+    function step(now) {
+      const progress = Math.min((now - startTime) / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3); // ease-out-cubic
+      const value = Math.round(ease * target);
+      el.textContent = prefix + value + suffix;
+      if (progress < 1) requestAnimationFrame(step);
     }
+    requestAnimationFrame(step);
+  }
 
-  });
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCount(entry.target);
+        counterObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
 
-  /**
-   * Initiate portfolio lightbox 
-   */
-  const portfolioLightbox = GLightbox({
-    selector: '.portfolio-lightbox'
-  });
+  $$('[data-count]').forEach(el => counterObserver.observe(el));
 
-  /**
-   * Portfolio details slider
-   */
-  new Swiper('.portfolio-details-slider', {
-    speed: 400,
-    loop: true,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      type: 'bullets',
-      clickable: true
+  /* ----------------------------------------------------------------
+     Particle System — Canvas 2D
+  ---------------------------------------------------------------- */
+  if (prefersReducedMotion) return;
+
+  const canvas = $('#particle-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  let W, H, particles = [], animFrame;
+  const PARTICLE_COUNT = 70;
+  const CONNECTION_DIST = 130;
+  const mouse = { x: -1000, y: -1000 };
+
+  function resize() {
+    W = canvas.width  = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
+  }
+
+  function createParticles() {
+    particles = [];
+    for (let i = 0; i < PARTICLE_COUNT; i++) {
+      particles.push({
+        x:  Math.random() * W,
+        y:  Math.random() * H,
+        vx: (Math.random() - 0.5) * 0.4,
+        vy: (Math.random() - 0.5) * 0.4,
+        r:  Math.random() * 1.5 + 0.8
+      });
     }
-  });
+  }
 
-  /**
-   * Testimonials slider
-   */
-  new Swiper('.testimonials-slider', {
-    speed: 600,
-    loop: true,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false
-    },
-    slidesPerView: 'auto',
-    pagination: {
-      el: '.swiper-pagination',
-      type: 'bullets',
-      clickable: true
-    },
-    breakpoints: {
-      320: {
-        slidesPerView: 1,
-        spaceBetween: 20
-      },
+  function updateParticles() {
+    particles.forEach(p => {
+      // Subtle mouse attraction
+      const dx = mouse.x - p.x;
+      const dy = mouse.y - p.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < 180) {
+        p.vx += dx / dist * 0.012;
+        p.vy += dy / dist * 0.012;
+      }
+      // Speed limit
+      const speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
+      if (speed > 1.2) { p.vx *= 0.98; p.vy *= 0.98; }
 
-      1200: {
-        slidesPerView: 3,
-        spaceBetween: 20
+      p.x += p.vx;
+      p.y += p.vy;
+      if (p.x < 0)  { p.x = 0;  p.vx *= -1; }
+      if (p.x > W)  { p.x = W;  p.vx *= -1; }
+      if (p.y < 0)  { p.y = 0;  p.vy *= -1; }
+      if (p.y > H)  { p.y = H;  p.vy *= -1; }
+    });
+  }
+
+  function drawParticles() {
+    ctx.clearRect(0, 0, W, H);
+
+    // Connections
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const d  = Math.sqrt(dx * dx + dy * dy);
+        if (d < CONNECTION_DIST) {
+          const alpha = (1 - d / CONNECTION_DIST) * 0.35;
+          ctx.beginPath();
+          ctx.strokeStyle = `rgba(0,191,166,${alpha})`;
+          ctx.lineWidth = 0.6;
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.stroke();
+        }
       }
     }
-  });
 
-  /**
-   * Animation on scroll
-   */
-  window.addEventListener('load', () => {
-    AOS.init({
-      duration: 1000,
-      easing: 'ease-in-out',
-      once: true,
-      mirror: false
-    })
-  });
+    // Dots
+    particles.forEach(p => {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(0,191,166,0.7)';
+      ctx.fill();
+    });
 
-})()
+    // Copper accent dots (every ~7th particle)
+    particles.forEach((p, i) => {
+      if (i % 7 === 0) {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r * 1.4, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(212,129,42,0.5)';
+        ctx.fill();
+      }
+    });
+  }
+
+  function loop() {
+    updateParticles();
+    drawParticles();
+    animFrame = requestAnimationFrame(loop);
+  }
+
+  // Mouse tracking (hero section only)
+  const hero = $('#hero');
+  if (hero) {
+    hero.addEventListener('mousemove', e => {
+      const rect = canvas.getBoundingClientRect();
+      mouse.x = e.clientX - rect.left;
+      mouse.y = e.clientY - rect.top;
+    });
+    hero.addEventListener('mouseleave', () => { mouse.x = -1000; mouse.y = -1000; });
+  }
+
+  window.addEventListener('resize', () => {
+    resize();
+    createParticles();
+  }, { passive: true });
+
+  // Pause particles when hero is off screen (performance)
+  const heroObserver = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) {
+      if (!animFrame) loop();
+    } else {
+      cancelAnimationFrame(animFrame);
+      animFrame = null;
+    }
+  });
+  if (hero) heroObserver.observe(hero);
+
+  resize();
+  createParticles();
+  loop();
+
+})();

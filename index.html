@@ -1,513 +1,527 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cristián López — Mining × AI × Digital Transformation</title>
+  <meta name="description" content="Cristián López — Senior Digital Analytics & OT Leader. 12+ years bridging mining operations and machine intelligence at Glencore and Codelco. Brisbane, Australia.">
+  <meta name="keywords" content="Cristian Lopez, Digital Analytics, Operational Technology, Mining, AI, Machine Learning, Brisbane, Glencore, Codelco">
 
-  <title>Cristián López — Senior Digital Analytics &amp; OT Manager</title>
-  <meta name="description" content="Cristián López — Senior Digital Analytics and Operational Technology Manager. Leading IT/OT transformation, AI-powered analytics and process automation in the global mining and processing industry.">
-  <meta name="keywords" content="Cristian Lopez, Digital Analytics, Operational Technology, Mining, IT/OT, Data Science, Brisbane">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Cristián López — Mining × AI × Digital Transformation">
+  <meta property="og:description" content="Senior Digital Analytics & OT Leader. Where mining meets machine intelligence.">
+  <meta property="og:url" content="https://crilopenafiel.github.io/HomePage/">
+  <meta property="og:image" content="assets/img/profile-img.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Cristián López — Mining × AI × Digital Transformation">
+  <meta name="twitter:description" content="Senior Digital Analytics & OT Leader. Where mining meets machine intelligence.">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://crilopenafiel.github.io/HomePage/">
 
   <!-- Favicons -->
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 
-  <!-- Vendor CSS (all local) -->
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-  <!-- Leaflet (for World Map section) -->
+  <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 
-  <!-- Main stylesheet -->
-  <link href="assets/css/style.css" rel="stylesheet">
-</head>
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
 
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Cristián López",
+    "jobTitle": "Senior Manager, Digital Analytics & Operational Technology",
+    "worksFor": { "@type": "Organization", "name": "Glencore" },
+    "url": "https://crilopenafiel.github.io/HomePage/",
+    "email": "crilocl@gmail.com",
+    "address": { "@type": "PostalAddress", "addressLocality": "Brisbane", "addressCountry": "AU" },
+    "alumniOf": [
+      { "@type": "CollegeOrUniversity", "name": "University of Melbourne" },
+      { "@type": "CollegeOrUniversity", "name": "Universidad de Chile" }
+    ],
+    "sameAs": ["https://www.linkedin.com/in/cristian-lopez"]
+  }
+  </script>
+</head>
 <body>
 
-  <!-- ======= Mobile nav toggle button ======= -->
-  <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
-
-  <!-- ======= Header ======= -->
-  <header id="header">
-    <div class="d-flex flex-column">
-
-      <div class="profile">
-        <img src="assets/img/profile-img.jpg" alt="Portrait of Cristián López" class="img-fluid rounded-circle">
-        <h1 class="text-light"><a href="index.html">Cristián López</a></h1>
-      </div>
-
-      <nav id="navbar" class="nav-menu navbar">
-        <ul>
-          <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
-          <li><a href="#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>About</span></a></li>
-          <li><a href="#facts" class="nav-link scrollto"><i class="bx bx-bulb"></i> <span>Facts</span></a></li>
-          <li><a href="#skills" class="nav-link scrollto"><i class="bx bx-bar-chart-alt-2"></i> <span>Skills</span></a></li>
-          <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
-          <li><a href="#map" class="nav-link scrollto"><i class="bx bx-globe"></i> <span>World Map</span></a></li>
-          <li><a href="#services" class="nav-link scrollto"><i class="bx bx-briefcase"></i> <span>Services</span></a></li>
-          <li><a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
-        </ul>
-      </nav>
+  <!-- ===================== NAVIGATION ===================== -->
+  <nav id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a class="nav-brand" href="#hero" aria-label="Home">CL</a>
+      <button class="nav-hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="nav-links" role="list">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Expertise</a></li>
+        <li><a href="#timeline">Career</a></li>
+        <li><a href="#map">Global</a></li>
+        <li><a href="#publications">Research</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#values">Values</a></li>
+        <li><a href="#contact" class="nav-cta">Connect</a></li>
+      </ul>
     </div>
-  </header>
+  </nav>
 
-  <main id="main">
+  <main id="main-content">
 
-    <!-- ======= Hero Section ======= -->
-    <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
-      <div class="hero-container" data-aos="fade-in">
-        <h2>Cristián López</h2>
-        <p>I'm a <span class="typed" data-typed-items="Team Leader, Innovator, Strategist, Data Evangelist, Change Agent, Problem Solver"></span></p>
+    <!-- ===================== HERO ===================== -->
+    <section id="hero" aria-label="Hero">
+      <canvas id="particle-canvas" aria-hidden="true"></canvas>
+      <div class="hero-content">
+        <p class="hero-eyebrow" data-aos>Where mining meets machine intelligence.</p>
+        <h1 class="hero-name" data-aos data-aos-delay="100">
+          <span>Cristián</span>
+          <span>López</span>
+        </h1>
+        <p class="hero-role" data-aos data-aos-delay="200">Senior Digital Analytics &amp; OT Leader</p>
+        <p class="hero-tagline" data-aos data-aos-delay="300">Mining &nbsp;×&nbsp; AI &nbsp;×&nbsp; Transformation</p>
+        <a href="#about" class="hero-scroll" data-aos data-aos-delay="400" aria-label="Scroll to About">
+          <span>Explore</span>
+          <svg width="16" height="24" viewBox="0 0 16 24" fill="none" aria-hidden="true">
+            <path d="M8 0v20M1 13l7 7 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </a>
       </div>
+      <div class="hero-grain" aria-hidden="true"></div>
     </section>
 
-    <!-- ======= About Section ======= -->
-    <section id="about" class="about">
+    <!-- ===================== ABOUT ===================== -->
+    <section id="about" aria-labelledby="about-heading">
       <div class="container">
-
-        <div class="section-title">
-          <h2>About</h2>
-          <p>Senior Digital Analytics and Operational Technology Manager with extensive experience in the mining and processing industry. Passionate about leading digital transformation projects, asset optimization and IT-OT alignment, fostering a data-driven culture and organizational adaptability. My focus is on generating value through process automation, artificial intelligence and change management.</p>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-4" data-aos="fade-right">
-            <img src="assets/img/aboutphoto.jpg" class="img-fluid" alt="Cristián López presenting at a conference">
+        <div class="about-grid">
+          <div class="about-photo-col" data-aos>
+            <div class="about-photo-frame">
+              <img src="assets/img/profile-img.jpg" alt="Cristián López — Senior Digital Analytics & OT Manager" loading="lazy">
+            </div>
           </div>
-          <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
-            <h3>Senior Digital Analytics &amp; Operational Technology Manager.</h3>
-            <p class="fst-italic">
-              Over 10 years of experience in the mining &amp; processing sector &bull;
-              Led 20+ digital transformation initiatives &bull;
-              Drove a 30% uplift in asset utilization &bull;
-              Delivered $15M+ in operational cost savings.
+          <div class="about-content-col" data-aos data-aos-delay="150">
+            <span class="eyebrow">About</span>
+            <h2 id="about-heading">A leader at the intersection<br>of deep earth and deep data.</h2>
+            <p class="about-narrative">
+              Born in Chile and forged in the world's most demanding mining operations, I've spent twelve years translating the language of ore bodies into the language of algorithms. From the copper pits of the Atacama to the boardrooms of Brisbane, I've led digital transformation at two of the planet's largest mining companies — Glencore and Codelco — driving more than $250M in portfolio value through AI, advanced analytics, and IT-OT convergence.
             </p>
-            <div class="row">
-              <div class="col-lg-6">
-                <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Interests:</strong> <span>Data Science, Enterprise Architectures, Change Management</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong> <span><a href="https://cristianlopez.au" target="_blank" rel="noopener">cristianlopez.au</a></span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>Brisbane, Australia</span></li>
-                </ul>
-              </div>
-              <div class="col-lg-6">
-                <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>Master of Information Systems (<em>University of Melbourne</em>)</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>Graduate Diploma, Mining Business Management (<em>Universidad Adolfo Ibáñez</em>)</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>Bachelor of Engineering, Extractive Mining &amp; Metallurgy (<em>University of Chile</em>)</span></li>
-                </ul>
-              </div>
-            </div>
-            <p>
-              As a Senior Digital Analytics and Operational Technology Manager, I lead global teams in the mining and processing sector to deliver transformative, data-driven solutions. With extensive experience at industry leaders like Glencore and Codelco, I specialize in AI-powered analytics, IT-OT integration and process automation to optimize asset performance and operational efficiency. Passionate about fostering innovation and continuous improvement, I excel at guiding cross-functional teams through complex digital transformations and change management initiatives. My mission is to unlock value by leveraging advanced technologies, strategic insights and a collaborative, results-oriented mindset.
+            <p class="about-narrative">
+              I hold an Australian Global Talent visa — recognition by the Australian Government of exceptional ability in the resources technology sector. My work sits at the rare intersection where mining engineering rigor meets machine learning possibility, where a decade of operational instinct informs every model I build. I lead with curiosity, execute with precision, and believe the most important technology is still the people who use it.
             </p>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ======= Facts Section ======= -->
-    <section id="facts" class="facts section-bg">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Facts</h2>
-          <p>Key highlights from my professional background.</p>
-        </div>
-
-        <div class="row g-4">
-
-          <div class="col-6 col-md-4 col-lg-3">
-            <div class="card h-100 border-0 shadow-sm">
-              <div class="card-body d-flex flex-column justify-content-center align-items-center text-center">
-                <i class="bx bx-time fs-1 text-primary mb-2"></i>
-                <h3 class="mb-1">10+</h3>
-                <p class="mb-0">Years Experience</p>
+            <div class="stat-row">
+              <div class="stat-item">
+                <span class="stat-number font-mono" data-count="12" data-suffix="+">0</span>
+                <span class="stat-label">Years Mining &amp; Tech</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number font-mono" data-count="250" data-prefix="$" data-suffix="M+">0</span>
+                <span class="stat-label">Portfolio Value Led</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number font-mono" data-count="20" data-suffix="+">0</span>
+                <span class="stat-label">Transformation Initiatives</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number font-mono" data-count="3">0</span>
+                <span class="stat-label">Languages (ES · EN · FR)</span>
               </div>
             </div>
           </div>
-
-          <div class="col-6 col-md-4 col-lg-3">
-            <div class="card h-100 border-0 shadow-sm">
-              <div class="card-body d-flex flex-column justify-content-center align-items-center text-center">
-                <i class="bx bx-building fs-1 text-primary mb-2"></i>
-                <h3 class="mb-1">4</h3>
-                <p class="mb-0">Organizations Collaborated</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-6 col-md-4 col-lg-3">
-            <div class="card h-100 border-0 shadow-sm">
-              <div class="card-body d-flex flex-column justify-content-center align-items-center text-center">
-                <i class="bx bx-book-open fs-1 text-primary mb-2"></i>
-                <h3 class="mb-1">4</h3>
-                <p class="mb-0">Academic Degrees</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-6 col-md-4 col-lg-3">
-            <div class="card h-100 border-0 shadow-sm">
-              <div class="card-body d-flex flex-column justify-content-center align-items-center text-center">
-                <i class="bx bx-chat fs-1 text-primary mb-2"></i>
-                <h3 class="mb-1">3</h3>
-                <p class="mb-1">Languages Spoken</p>
-                <small class="text-muted">Spanish, English, French</small>
-              </div>
-            </div>
-          </div>
-
         </div>
       </div>
     </section>
 
-    <!-- ======= Skills Section ======= -->
-    <section id="skills" class="skills">
+    <!-- ===================== SKILLS VISUALISER ===================== -->
+    <section id="skills" aria-labelledby="skills-heading">
       <div class="container">
-
-        <div class="section-title">
-          <h2>Skills</h2>
-          <p>With over 10 years in Digital Analytics, I've delivered more than 150 Power BI dashboards, led 20 Microsoft Azure deployments, written over 50 Python &amp; C# automation scripts, and driven an average 30% improvement in Overall Equipment Effectiveness.</p>
+        <div class="section-header" data-aos>
+          <span class="eyebrow">Expertise Model</span>
+          <h2 id="skills-heading">The Comb-Shaped Professional</h2>
+          <p class="section-intro">The comb-shaped professional combines broad cross-disciplinary knowledge with deep expertise across multiple domains — enabling them to lead at the intersection of complex systems. Toggle the shapes below to see how this model compares.</p>
         </div>
 
-        <div class="row skills-content">
-
-          <div class="col-lg-6" data-aos="fade-up">
-
-            <div class="progress">
-              <span class="skill">Microsoft Azure <i class="val">95%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">Power BI <i class="val">90%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">Python &amp; C# <i class="val">85%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-          </div>
-
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-
-            <div class="progress">
-              <span class="skill">Advanced Analytics &amp; AI <i class="val">80%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-          </div>
-
+        <div class="skill-tabs" role="tablist" aria-label="Skill shape models" data-aos>
+          <button class="skill-tab" role="tab" aria-selected="false" aria-controls="skill-diagram" data-shape="i">I-Shape</button>
+          <button class="skill-tab" role="tab" aria-selected="false" aria-controls="skill-diagram" data-shape="t">T-Shape</button>
+          <button class="skill-tab" role="tab" aria-selected="false" aria-controls="skill-diagram" data-shape="pi">Π-Shape</button>
+          <button class="skill-tab active" role="tab" aria-selected="true" aria-controls="skill-diagram" data-shape="comb">Comb-Shape ✦</button>
         </div>
 
-      </div>
-    </section>
-
-    <!-- ======= Resume Section ======= -->
-    <section id="resume" class="resume section-bg">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Resume</h2>
-          <p>A snapshot of my academic background and professional journey.</p>
+        <div class="skill-diagram-wrap" data-aos>
+          <div id="skill-diagram" role="tabpanel">
+            <svg id="skill-svg" aria-label="Skill shape visualisation" role="img"></svg>
+          </div>
+          <div id="skill-tooltip" class="skill-tooltip" role="tooltip" aria-live="polite" hidden></div>
         </div>
 
-        <div class="row">
-
-          <div class="col-lg-6">
-            <h3 class="resume-title">Education</h3>
-
-            <div class="resume-item">
-              <h4>Master of Information Systems</h4>
-              <h5>2015 – 2016</h5>
-              <p><em>University of Melbourne, Melbourne, Australia</em></p>
-            </div>
-
-            <div class="resume-item">
-              <h4>Graduate Diploma in Mining Business Management</h4>
-              <h5>2013</h5>
-              <p><em>Universidad Adolfo Ibáñez, Santiago, Chile</em></p>
-            </div>
-
-            <div class="resume-item">
-              <h4>Bachelor of Engineering Science in Extractive Mining &amp; Metallurgy</h4>
-              <h5>2006 – 2011</h5>
-              <p><em>University of Chile, Santiago, Chile</em></p>
-            </div>
-          </div>
-
-          <div class="col-lg-6">
-            <h3 class="resume-title">Professional Experience</h3>
-
-            <div class="resume-item">
-              <h4>Senior Manager, Digital Analytics &amp; OT</h4>
-              <h5>Oct 2023 – Present</h5>
-              <p><em>Glencore, Brisbane, Australia</em></p>
-            </div>
-
-            <div class="resume-item">
-              <h4>Global Digital Analytics Manager</h4>
-              <h5>Mar 2021 – Oct 2023</h5>
-              <p><em>Glencore, Brisbane, Australia</em></p>
-            </div>
-
-            <div class="resume-item">
-              <h4>Corporate Director of Digital Transformation</h4>
-              <h5>Dec 2019 – Feb 2021</h5>
-              <p><em>Codelco, Santiago, Chile</em></p>
-            </div>
-
-            <div class="resume-item">
-              <h4>Director of Innovation</h4>
-              <h5>Jan 2019 – Nov 2019</h5>
-              <p><em>Codelco El Teniente, Rancagua, Chile</em></p>
-            </div>
-
-            <div class="resume-item">
-              <h4>Product Manager</h4>
-              <h5>Feb 2016 – Dec 2018</h5>
-              <p><em>Tiger Spider, Melbourne, Australia</em></p>
-            </div>
-
-            <div class="resume-item">
-              <h4>Mining &amp; Process Engineer</h4>
-              <h5>2013 – 2015</h5>
-              <p><em>Antofagasta PLC, Chile</em></p>
-            </div>
-          </div>
-
+        <div class="skill-breadth-tags" data-aos>
+          <span class="breadth-label">Broad knowledge base:</span>
+          <span class="tag">IT/OT Convergence</span>
+          <span class="tag">Cybersecurity</span>
+          <span class="tag">Agile / Scrum</span>
+          <span class="tag">Data Governance</span>
+          <span class="tag">Financial Analysis</span>
+          <span class="tag">Geomechanics</span>
+          <span class="tag">Logistics Optimisation</span>
+          <span class="tag">Innovation Management</span>
         </div>
       </div>
     </section>
 
-    <!-- ======= World Map Section ======= -->
-    <section id="map" class="map">
+    <!-- ===================== CAREER TIMELINE ===================== -->
+    <section id="timeline" aria-labelledby="timeline-heading">
       <div class="container">
-
-        <div class="section-title">
-          <h2>World Map</h2>
-          <p>Cities where I've lived and worked across my career.</p>
+        <div class="section-header" data-aos>
+          <span class="eyebrow">Career</span>
+          <h2 id="timeline-heading">The Journey</h2>
         </div>
 
-        <div id="worldmap" style="height: 500px; width: 100%;" aria-label="Interactive map showing career cities"></div>
+        <div class="timeline" role="list">
 
+          <article class="timeline-item" data-side="right" data-aos role="listitem">
+            <div class="timeline-node" aria-hidden="true"></div>
+            <div class="timeline-card">
+              <div class="timeline-meta">
+                <span class="timeline-date">Oct 2023 – Present</span>
+                <span class="timeline-location">Brisbane, Australia</span>
+              </div>
+              <h3>Senior Manager, Digital Analytics &amp; OT</h3>
+              <p class="timeline-company">Glencore</p>
+              <ul class="timeline-achievements">
+                <li>Leads $25M+ CAPEX digital optimisation portfolio across Glencore Copper globally</li>
+                <li>Driving $75M+ CAPEX asset modernisation strategies and $150M+ OPEX reduction in Australian Zinc/Lead</li>
+                <li>Founded digital academy and IS steering committee; first digital projects in African assets</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="timeline-item" data-side="left" data-aos role="listitem">
+            <div class="timeline-node" aria-hidden="true"></div>
+            <div class="timeline-card">
+              <div class="timeline-meta">
+                <span class="timeline-date">Mar 2021 – Oct 2023</span>
+                <span class="timeline-location">Brisbane, Australia</span>
+              </div>
+              <h3>Global Digital Analytics Manager</h3>
+              <p class="timeline-company">Glencore</p>
+              <ul class="timeline-achievements">
+                <li>Scaled advanced analytics capability across global copper and zinc assets</li>
+                <li>Delivered 6.06% fine copper uplift via XGBoost / EMCEE SAG mill optimisation models</li>
+                <li>Built and mentored cross-functional data science teams across three continents</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="timeline-item" data-side="right" data-aos role="listitem">
+            <div class="timeline-node" aria-hidden="true"></div>
+            <div class="timeline-card">
+              <div class="timeline-meta">
+                <span class="timeline-date">Dec 2019 – Feb 2021</span>
+                <span class="timeline-location">Santiago, Chile</span>
+              </div>
+              <h3>Corporate Director of Digital Transformation</h3>
+              <p class="timeline-company">Codelco</p>
+              <ul class="timeline-achievements">
+                <li>9.7% copper grade uplift via ML prescriptive models at Chuquicamata — industry-leading result</li>
+                <li>Founded Codelco's first corporate data science unit and data governance committee</li>
+                <li>Built COVID-19 digital geofencing app deployed across all Codelco operations within 72 hours</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="timeline-item" data-side="left" data-aos role="listitem">
+            <div class="timeline-node" aria-hidden="true"></div>
+            <div class="timeline-card">
+              <div class="timeline-meta">
+                <span class="timeline-date">Jan 2019 – Nov 2019</span>
+                <span class="timeline-location">Rancagua, Chile</span>
+              </div>
+              <h3>Director of Innovation</h3>
+              <p class="timeline-company">Codelco El Teniente</p>
+              <ul class="timeline-achievements">
+                <li>Led data science strategy and governance for the world's largest underground copper mine</li>
+                <li>Deployed LightGBM comminution models achieving measurable throughput gains</li>
+                <li>Established innovation pipeline and digital-physical integration roadmap</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="timeline-item" data-side="right" data-aos role="listitem">
+            <div class="timeline-node" aria-hidden="true"></div>
+            <div class="timeline-card">
+              <div class="timeline-meta">
+                <span class="timeline-date">Feb 2016 – Dec 2018</span>
+                <span class="timeline-location">Melbourne, Australia</span>
+              </div>
+              <h3>Product Manager</h3>
+              <p class="timeline-company">Tiger Spider</p>
+              <ul class="timeline-achievements">
+                <li>Led cloud-based multi-body dynamics SaaS platform for heavy vehicle logistics</li>
+                <li>Winner — ANZ Innovation Hackathon 2016</li>
+                <li>Presented at HVTT15 (Rotterdam) on cloud computing for heavy vehicle optimisation</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="timeline-item" data-side="left" data-aos role="listitem">
+            <div class="timeline-node" aria-hidden="true"></div>
+            <div class="timeline-card">
+              <div class="timeline-meta">
+                <span class="timeline-date">2013 – 2015</span>
+                <span class="timeline-location">Antofagasta, Chile</span>
+              </div>
+              <h3>Mining &amp; Process Engineer</h3>
+              <p class="timeline-company">Antofagasta PLC</p>
+              <ul class="timeline-achievements">
+                <li>Designed in-house truck dispatch system, reducing fleet idle time by 18%</li>
+                <li>Built truck-fleet simulation models for mine planning and grade control optimisation</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="timeline-item" data-side="right" data-aos role="listitem">
+            <div class="timeline-node" aria-hidden="true"></div>
+            <div class="timeline-card">
+              <div class="timeline-meta">
+                <span class="timeline-date">2012 – 2013</span>
+                <span class="timeline-location">Santiago, Chile</span>
+              </div>
+              <h3>Research Assistant</h3>
+              <p class="timeline-company">AMTC — University of Chile</p>
+              <ul class="timeline-achievements">
+                <li>Applied Synthetic Rock Mass modelling to characterise rock mass behaviour at El Teniente</li>
+                <li>Published at FLAC/DEM Symposium 2013, Hangzhou, China</li>
+              </ul>
+            </div>
+          </article>
+
+        </div><!-- /.timeline -->
+      </div>
+    </section>
+
+    <!-- ===================== WORLD MAP ===================== -->
+    <section id="map" aria-labelledby="map-heading">
+      <div class="container">
+        <div class="section-header" data-aos>
+          <span class="eyebrow">Global Footprint</span>
+          <h2 id="map-heading">A Career Across Two Continents</h2>
+          <p class="section-intro">From the Atacama Desert to the Queensland coast — click any marker to explore the work done there.</p>
+        </div>
+        <div id="world-map" aria-label="Interactive world map showing career cities" data-aos></div>
         <noscript>
           <ul class="map-fallback">
-            <li><strong>Brisbane, Australia</strong> — Senior Manager, Digital Analytics &amp; OT (Glencore)</li>
-            <li><strong>Melbourne, Australia</strong> — Product Manager (Tiger Spider)</li>
-            <li><strong>Santiago, Chile</strong> — Corporate Director of Digital Transformation (Codelco)</li>
-            <li><strong>Rancagua, Chile</strong> — Director of Innovation (Codelco El Teniente)</li>
-            <li><strong>Antofagasta, Chile</strong> — Mining &amp; Process Engineer (Antofagasta PLC)</li>
+            <li><strong>Brisbane</strong> — Glencore, Senior Manager Digital Analytics &amp; OT</li>
+            <li><strong>Melbourne</strong> — Tiger Spider, Product Manager / University of Melbourne</li>
+            <li><strong>Santiago</strong> — Codelco HQ, Corporate Director of Digital Transformation</li>
+            <li><strong>Rancagua</strong> — Codelco El Teniente, Director of Innovation</li>
+            <li><strong>Antofagasta</strong> — Antofagasta PLC, Mining &amp; Process Engineer</li>
+            <li><strong>Rotterdam</strong> — HVTT15 Conference, Paper Presentation</li>
+            <li><strong>Hangzhou</strong> — FLAC/DEM Symposium, Paper Presentation</li>
           </ul>
         </noscript>
-
       </div>
     </section>
 
-    <!-- ======= Services Section ======= -->
-    <section id="services" class="services section-bg">
+    <!-- ===================== PUBLICATIONS ===================== -->
+    <section id="publications" aria-labelledby="pub-heading">
       <div class="container">
+        <div class="section-header" data-aos>
+          <span class="eyebrow">Research &amp; Speaking</span>
+          <h2 id="pub-heading">Publications &amp; Conference Presentations</h2>
+        </div>
+        <div class="pub-grid">
 
-        <div class="section-title">
-          <h2>Services</h2>
-          <p>Some highlights of what I offer.</p>
+          <article class="pub-card" data-aos>
+            <div class="pub-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 12h6M9 16h6M17 2H7a2 2 0 00-2 2v16a2 2 0 002 2h10a2 2 0 002-2V4a2 2 0 00-2-2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <div class="pub-content">
+              <span class="pub-venue">Procemin-GEOMET 2019 · Santiago, Chile</span>
+              <h3>Optimising SAG Plant production using Advanced Analytics at Codelco El Teniente</h3>
+              <p>Presented prescriptive ML model results achieving 6.06% fine copper uplift via XGBoost/EMCEE Bayesian optimisation of SAG mill operations.</p>
+            </div>
+          </article>
+
+          <article class="pub-card" data-aos data-aos-delay="100">
+            <div class="pub-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="pub-content">
+              <span class="pub-venue">HVTT15 2018 · Rotterdam, Netherlands</span>
+              <h3>Leveraging Cloud Computing for Heavy Vehicle Optimisation</h3>
+              <p>Demonstrated cloud-native architecture for real-time multi-body dynamics simulation applied to heavy haulage fleet management.</p>
+            </div>
+          </article>
+
+          <article class="pub-card" data-aos data-aos-delay="200">
+            <div class="pub-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/><path d="M12 8v4l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <div class="pub-content">
+              <span class="pub-venue">FLAC/DEM Symposium 2013 · Hangzhou, China</span>
+              <h3>Application of Synthetic Rock Mass to characterise rock mass behaviour at El Teniente Mine</h3>
+              <p>Applied discrete element modelling to quantify geomechanical behaviour in block cave operations — foundational research for mine stability planning.</p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== EDUCATION ===================== -->
+    <section id="education" aria-labelledby="edu-heading">
+      <div class="container">
+        <div class="section-header" data-aos>
+          <span class="eyebrow">Education &amp; Credentials</span>
+          <h2 id="edu-heading">Academic Foundation</h2>
         </div>
 
-        <div class="row">
+        <div class="edu-grid">
 
-          <div class="col-lg-6 col-md-6 d-flex align-items-stretch" data-aos="zoom-in">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bxs-briefcase"></i></div>
-              <h4 class="title"><a href="#">Digital Transformation</a></h4>
-              <p class="description">Design and implement end-to-end digital solutions in mining operations.</p>
-            </div>
+          <div class="edu-card" data-aos>
+            <div class="edu-degree">Master of Information Systems</div>
+            <div class="edu-institution">University of Melbourne</div>
+            <div class="edu-meta">2015 – 2016 · Melbourne, Australia</div>
+            <div class="edu-note">Becas Chile full scholarship recipient</div>
           </div>
 
-          <div class="col-lg-6 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bxs-bar-chart-alt-2"></i></div>
-              <h4 class="title"><a href="#">Advanced Analytics</a></h4>
-              <p class="description">Build AI/ML models and dashboards to drive data-driven decisions.</p>
-            </div>
+          <div class="edu-card" data-aos data-aos-delay="80">
+            <div class="edu-degree">Graduate Diploma, Mining Business Management</div>
+            <div class="edu-institution">Universidad Adolfo Ibáñez</div>
+            <div class="edu-meta">2013 · Santiago, Chile</div>
           </div>
 
-          <div class="col-lg-6 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="200">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bxs-cog"></i></div>
-              <h4 class="title"><a href="#">Process Automation</a></h4>
-              <p class="description">Automate workflows with Python, C# and RPA tools.</p>
-            </div>
+          <div class="edu-card" data-aos data-aos-delay="160">
+            <div class="edu-degree">Bachelor of Engineering Science — Extractive Mining &amp; Metallurgy</div>
+            <div class="edu-institution">Universidad de Chile</div>
+            <div class="edu-meta">2006 – 2011 · Santiago, Chile</div>
           </div>
 
-          <div class="col-lg-6 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="300">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bxs-group"></i></div>
-              <h4 class="title"><a href="#">Change Management</a></h4>
-              <p class="description">Lead organizational change for smooth IT-OT integration.</p>
-            </div>
+        </div>
+
+        <div class="credentials-row" data-aos>
+          <span class="eyebrow" style="margin-bottom:1rem;display:block;">Recognition &amp; Certifications</span>
+          <div class="cred-tags">
+            <span class="cred-tag cred-highlight">🇦🇺 Australian Global Talent Visa (2020)</span>
+            <span class="cred-tag cred-highlight">🏆 Becas Chile Scholarship (2014)</span>
+            <span class="cred-tag">Lean Six Sigma Green Belt</span>
+            <span class="cred-tag">Certified ScrumMaster (CSM)</span>
+            <span class="cred-tag">ANZ Innovation Hackathon Winner (2016)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== VALUES ===================== -->
+    <section id="values" aria-labelledby="values-heading">
+      <div class="container">
+        <div class="section-header" data-aos>
+          <span class="eyebrow">Philosophy</span>
+          <h2 id="values-heading">What I Stand For</h2>
+        </div>
+        <div class="values-grid">
+
+          <div class="value-card" data-aos tabindex="0" role="button" aria-label="Excellence value">
+            <div class="value-icon" aria-hidden="true">◆</div>
+            <h3 class="value-name">Excellence</h3>
+            <p class="value-desc">High standards aren't negotiable. Every deliverable, every decision, every interaction — executed with the same rigour I'd apply to a production-critical system.</p>
+          </div>
+
+          <div class="value-card" data-aos data-aos-delay="80" tabindex="0" role="button" aria-label="Loyalty value">
+            <div class="value-icon" aria-hidden="true">◆</div>
+            <h3 class="value-name">Loyalty</h3>
+            <p class="value-desc">I invest in people and partnerships for the long term. Trust is built through consistency, not contracts. The teams I've led know I have their back.</p>
+          </div>
+
+          <div class="value-card" data-aos data-aos-delay="160" tabindex="0" role="button" aria-label="Growth value">
+            <div class="value-icon" aria-hidden="true">◆</div>
+            <h3 class="value-name">Growth</h3>
+            <p class="value-desc">Stagnation is the only real failure. I pursue continuous improvement relentlessly — in the models I build, the teams I lead, and the person I'm becoming.</p>
+          </div>
+
+          <div class="value-card" data-aos data-aos-delay="240" tabindex="0" role="button" aria-label="Knowledge value">
+            <div class="value-icon" aria-hidden="true">◆</div>
+            <h3 class="value-name">Knowledge</h3>
+            <p class="value-desc">Rigour over shortcuts. Applied insight over theoretical abstraction. I've learned to ask better questions by spending years at the coalface — literally.</p>
+          </div>
+
+          <div class="value-card" data-aos data-aos-delay="320" tabindex="0" role="button" aria-label="Balance value">
+            <div class="value-icon" aria-hidden="true">◆</div>
+            <h3 class="value-name">Balance</h3>
+            <p class="value-desc">Sustainable performance requires sustainable living. The same systems thinking I apply to mining operations, I apply to how I work and live.</p>
           </div>
 
         </div>
       </div>
     </section>
 
-    <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact">
+    <!-- ===================== CONTACT ===================== -->
+    <section id="contact" aria-labelledby="contact-heading">
       <div class="container">
-
-        <div class="section-title">
-          <h2>Contact Me!</h2>
-          <p>Website: <a href="https://cristianlopez.au" target="_blank" rel="noopener">cristianlopez.au</a></p>
-        </div>
-
-        <div class="row" data-aos="fade-in">
-
-          <div class="col-lg-5 d-flex align-items-stretch">
-            <div class="info">
-              <div class="email">
-                <i class="bi bi-envelope"></i>
-                <h4>Email:</h4>
-                <p>crilocl@gmail.com</p>
-              </div>
-              <div class="email">
-                <i class="bi bi-geo-alt"></i>
-                <h4>Location:</h4>
-                <p>Brisbane, Australia</p>
-              </div>
-            </div>
+        <div class="contact-inner" data-aos>
+          <span class="eyebrow">Contact</span>
+          <h2 id="contact-heading">Let's build something<br>that matters.</h2>
+          <p class="contact-sub">Open to senior leadership roles, advisory engagements, and speaking invitations at the intersection of mining, AI, and digital transformation.</p>
+          <a href="mailto:crilocl@gmail.com" class="cta-btn">
+            <span>Get in touch</span>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M3 10h14M10 3l7 7-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <div class="contact-links">
+            <a href="mailto:crilocl@gmail.com" class="contact-link" aria-label="Email Cristián López">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 5h14l-7 7-7-7zm0 0v10h14V5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              crilocl@gmail.com
+            </a>
+            <a href="https://www.linkedin.com/in/cristian-lopez" target="_blank" rel="noopener noreferrer" class="contact-link" aria-label="LinkedIn profile">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M16.667 2.5H3.333A.833.833 0 002.5 3.333v13.334c0 .46.373.833.833.833h13.334c.46 0 .833-.373.833-.833V3.333A.833.833 0 0016.667 2.5zM7.083 14.167H5.417V8.333h1.666v5.834zM6.25 7.633a.967.967 0 110-1.933.967.967 0 010 1.933zM14.583 14.167H12.92v-2.834c0-.633-.012-1.449-.883-1.449-.884 0-1.02.69-1.02 1.403v2.88H9.352V8.333h1.598v.795h.022c.222-.42.765-.883 1.574-.883 1.684 0 1.995 1.108 1.995 2.549v3.373h.042z"/></svg>
+              LinkedIn
+            </a>
+            <span class="contact-link" aria-label="Location">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 11a2.5 2.5 0 100-5 2.5 2.5 0 000 5z" stroke="currentColor" stroke-width="1.3"/><path d="M10 2a7 7 0 017 7c0 4.5-7 11-7 11S3 13.5 3 9a7 7 0 017-7z" stroke="currentColor" stroke-width="1.3"/></svg>
+              Brisbane, Australia
+            </span>
           </div>
-
-          <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-            <form action="mailto:crilocl@gmail.com" method="post" enctype="text/plain" role="form" class="php-email-form w-100">
-              <div class="row">
-                <div class="form-group col-md-6">
-                  <label for="name">Your Name</label>
-                  <input type="text" name="name" class="form-control" id="name" required>
-                </div>
-                <div class="form-group col-md-6">
-                  <label for="email">Your Email</label>
-                  <input type="email" name="email" class="form-control" id="email" required>
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="subject">Subject</label>
-                <input type="text" name="subject" class="form-control" id="subject" required>
-              </div>
-              <div class="form-group">
-                <label for="message">Message</label>
-                <textarea name="message" class="form-control" id="message" rows="6" required></textarea>
-              </div>
-              <div class="text-center">
-                <button type="submit" class="btn btn-primary">Send Message</button>
-              </div>
-            </form>
-          </div>
-
         </div>
       </div>
     </section>
 
   </main>
 
-  <!-- ======= Footer ======= -->
+  <!-- ===================== FOOTER ===================== -->
   <footer id="footer">
     <div class="container">
-      <div class="copyright">
-        &copy; Copyright <strong><span>Cristián López</span></strong>
+      <div class="footer-inner">
+        <span class="footer-brand">Cristián López</span>
+        <span class="footer-tagline">Where mining meets machine intelligence.</span>
+        <span class="footer-copy">&copy; <span id="footer-year"></span> All rights reserved.</span>
       </div>
     </div>
   </footer>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <!-- Back to top -->
+  <a href="#hero" class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+      <path d="M9 14V4M3 9l6-6 6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </a>
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/purecounter/purecounter.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/typed.js/typed.min.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-
-  <!-- Leaflet JS (for World Map) -->
+  <!-- Leaflet JS -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-  <!-- World Map initialization (defensive: no-op if Leaflet fails to load) -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      var mapEl = document.getElementById('worldmap');
-      if (!mapEl) return;
-      if (typeof L === 'undefined') {
-        mapEl.innerHTML = '<ul class="map-fallback" style="padding:20px;">' +
-          '<li><strong>Brisbane, Australia</strong> — Senior Manager, Digital Analytics &amp; OT (Glencore)</li>' +
-          '<li><strong>Melbourne, Australia</strong> — Product Manager (Tiger Spider)</li>' +
-          '<li><strong>Santiago, Chile</strong> — Corporate Director of Digital Transformation (Codelco)</li>' +
-          '<li><strong>Rancagua, Chile</strong> — Director of Innovation (Codelco El Teniente)</li>' +
-          '<li><strong>Antofagasta, Chile</strong> — Mining &amp; Process Engineer (Antofagasta PLC)</li>' +
-          '</ul>';
-        return;
-      }
-
-      var cityNotes = [
-        { coords: [-27.4679, 153.0281], title: 'Brisbane, Australia', desc: 'Queensland capital and mining hub', activity: 'Senior Manager, Digital Analytics & OT (Glencore)', img: 'assets/img/brisbane.jpg', paragraph: 'I lead digital transformation and asset optimization at Glencore.' },
-        { coords: [-37.8136, 144.9631], title: 'Melbourne, Australia', desc: 'Technology and innovation center', activity: 'Product Manager (Tiger Spider)', img: 'assets/img/melbourne.jpg', paragraph: 'I managed the Tiger Spider Web platform and SaaS logistics solutions.' },
-        { coords: [-33.4489, -70.6693], title: 'Santiago, Chile', desc: 'Codelco corporate headquarters', activity: 'Corporate Director of Digital Transformation', img: 'assets/img/santiago.jpg', paragraph: 'I implemented prescriptive AI models at Codelco, boosting copper grade by 9.7% and built a COVID-19 geofencing app.' },
-        { coords: [-34.1708, -70.7395], title: 'Rancagua, Chile', desc: 'El Teniente operations headquarters', activity: 'Director of Innovation (Codelco El Teniente)', img: 'assets/img/rancagua.jpg', paragraph: 'I led Data Science and Governance at El Teniente, deploying prescriptive AI and asset automation.' },
-        { coords: [-23.65, -70.4], title: 'Antofagasta, Chile', desc: 'Key port city in mining', activity: 'Mining & Process Engineer (Antofagasta PLC)', img: 'assets/img/antofagasta.jpg', paragraph: 'At Minera Michilla, I designed dispatch and truck-fleet simulations to optimize planning and grade control.' }
-      ];
-
-      var map = L.map('worldmap').setView([0, 20], 2);
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; OpenStreetMap contributors',
-        maxZoom: 18
-      }).addTo(map);
-
-      cityNotes.forEach(function (c) {
-        var marker = L.marker(c.coords).addTo(map);
-        var tooltipHtml =
-          '<div class="city-tooltip-content">' +
-            '<img src="' + c.img + '" alt="' + c.title + '" />' +
-            '<div class="city-tooltip-text">' +
-              '<strong>' + c.title + '</strong>' +
-              '<em>' + c.desc + '</em>' +
-              '<span>' + c.activity + '</span>' +
-              '<p>' + c.paragraph + '</p>' +
-            '</div>' +
-          '</div>';
-        marker.bindTooltip(tooltipHtml, { direction: 'top', offset: [0, -15], className: 'city-tooltip', opacity: 0.98 });
-        marker.on('mouseover', function () { marker.openTooltip(); });
-        marker.on('mouseout', function () { marker.closeTooltip(); });
-      });
-    });
-  </script>
-
-  <!-- Template Main JS File -->
+  <!-- App Scripts -->
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/skills.js"></script>
+  <script src="assets/js/map.js"></script>
 
 </body>
-
 </html>

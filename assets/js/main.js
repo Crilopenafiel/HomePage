@@ -1,5 +1,5 @@
 /* ================================================================
-   main.js — Navigation, Particles, Counters, Scroll Animations
+   main.js - Navigation, Particles, Counters, Scroll Animations
    ================================================================ */
 
 (function () {
@@ -19,7 +19,7 @@
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
   /* ----------------------------------------------------------------
-     Navigation — scroll state + hamburger + scrollspy
+     Navigation - scroll state + hamburger + scrollspy
   ---------------------------------------------------------------- */
   const navbar   = $('#navbar');
   const hamburger = $('.nav-hamburger');
@@ -53,7 +53,7 @@
     });
   }
 
-  // Scrollspy — highlight active nav link
+  // Scrollspy - highlight active nav link
   const sections = $$('section[id]');
   const sectionOffsets = [];
 
@@ -78,7 +78,7 @@
   window.addEventListener('resize', buildOffsets, { passive: true });
 
   /* ----------------------------------------------------------------
-     AOS — Animate On Scroll (custom IntersectionObserver)
+     AOS - Animate On Scroll (custom IntersectionObserver)
   ---------------------------------------------------------------- */
   if (!prefersReducedMotion) {
     const aosObserver = new IntersectionObserver((entries) => {
@@ -128,7 +128,7 @@
   $$('[data-count]').forEach(el => counterObserver.observe(el));
 
   /* ----------------------------------------------------------------
-     Particle System — Canvas 2D
+     Particle System - Canvas 2D
   ---------------------------------------------------------------- */
   if (prefersReducedMotion) return;
 

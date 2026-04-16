@@ -1,5 +1,5 @@
 /* ================================================================
-   skills.js — Comb-Shape Interactive SVG Visualiser
+   skills.js - Comb-Shape Interactive SVG Visualiser
    ================================================================ */
 
 (function () {
@@ -59,9 +59,9 @@
           color: '#00BFA6',
           tooltipTitle: 'Software Engineering & Architecture',
           tooltipItems: [
-            'Cloud-native SaaS platform at Tiger Spider (multi-body dynamics)',
-            'Master of Information Systems, University of Melbourne',
-            'ANZ Innovation Hackathon Winner 2016'
+            'Master of Information Systems (University of Melbourne) and winner of ANZ Innovation Hackathon 2016.',
+            'Led cloud-based multi-body dynamics SaaS platform for heavy vehicle logistics at Tiger Spider. Presented at HVTT15 (Rotterdam) on cloud computing for heavy vehicle optimisation.',
+            'Development of Mi Codelco mobile app during COVID-19, deployed across all Codelco operations within 72 hours to manage HSEC protocols digitally.'
           ]
         },
         {
@@ -71,9 +71,9 @@
           color: '#00A688',
           tooltipTitle: 'AI / Machine Learning / Advanced Analytics',
           tooltipItems: [
-            '9.7% Cu grade uplift via ML models at Codelco Chuquicamata',
-            '6.06% fine Cu uplift via XGBoost/EMCEE SAG mill optimisation',
-            'GenAI and LightGBM comminution models at El Teniente'
+            'Metal uplift at multiple concentrators, smelters, and haul-and-loading processes using different optimisation heuristics leveraging ML prescriptive modelling.',
+            'Virtual sensing and process digital twinning using surrogate models and inference techniques such as Kalman filters, XGBoost, and CatBoost combined with physical process models.',
+            'Development of multiple advisory systems applied to business and industrial processes, many of them directly connected to process control OT layers.'
           ]
         },
         {
@@ -83,9 +83,9 @@
           color: '#D4812A',
           tooltipTitle: 'Digital Transformation & Change Management',
           tooltipItems: [
-            'Corporate Director of Digital Transformation, Codelco (2019–21)',
-            '$250M+ transformation portfolio across Glencore globally',
-            'Founded data governance committee and data science unit at Codelco'
+            'Corporate Director of Digital Transformation, Codelco (2019–21).',
+            '$250M+ transformation portfolio across Glencore globally.',
+            'Remote Operating Centres operating model expertise: designing, optimising, and commissioning at different types of operations.'
           ]
         },
         {
@@ -95,9 +95,9 @@
           color: '#B06A1F',
           tooltipTitle: 'Strategic Leadership & Portfolio Management',
           tooltipItems: [
-            '$25M+ CAPEX digital optimisation portfolio (Glencore Copper)',
-            'Australian Global Talent visa — recognised exceptional ability',
-            'Led cross-functional teams across 3 continents'
+            'Embedding data governance principles aligned with strategic routines and steering committees in large organisations using easy-to-understand digital products.',
+            'Led cross-functional teams and managed resources across three continents to deliver modernisation and optimisation portfolios with real financial impact and transferability of knowledge.',
+            'Training and coaching senior stakeholders in Industry 5.0 concepts.'
           ]
         }
       ]
@@ -111,7 +111,7 @@
   const BREADTH_H    = 38;
   const BREADTH_GAP  = 24;
   const LABEL_H      = 44;
-  const SVG_H        = 360;
+  const SVG_H        = 400;
   const MAX_TOOTH_H  = SVG_H - PAD - BREADTH_H - BREADTH_GAP - LABEL_H - PAD;
   const TOOTH_W_MAX  = 100;
   const TOOTH_GAP    = 18;
@@ -176,7 +176,7 @@
         'font-size': '11',
         'letter-spacing': '0.12em'
       });
-      bText.textContent = 'BREADTH — Cross-domain knowledge base';
+      bText.textContent = 'BREADTH: Cross-domain knowledge base';
       svg.appendChild(bText);
     }
 
@@ -275,6 +275,54 @@
         bar.setAttribute('aria-label', tooth.tooltipTitle);
       }
     });
+
+    // ── Past → Present arrow (comb shape only) ──
+    if (shapeKey === 'comb' && n > 1) {
+      const arrowY = teethTopY + MAX_TOOTH_H + 38;
+      const arrowX1 = startX;
+      const arrowX2 = startX + totalW;
+
+      // Arrow line
+      const arrowLine = svgEl('line', {
+        x1: arrowX1, y1: arrowY,
+        x2: arrowX2, y2: arrowY,
+        stroke: '#4A5568',
+        'stroke-width': '1.2',
+        'stroke-dasharray': '4 3'
+      });
+      svg.appendChild(arrowLine);
+
+      // Arrowhead
+      const arrowHead = svgEl('polygon', {
+        points: `${arrowX2},${arrowY} ${arrowX2 - 7},${arrowY - 4} ${arrowX2 - 7},${arrowY + 4}`,
+        fill: '#4A5568'
+      });
+      svg.appendChild(arrowHead);
+
+      // "Past" label
+      const pastLabel = svgEl('text', {
+        x: arrowX1, y: arrowY - 7,
+        'text-anchor': 'start',
+        fill: '#4A5568',
+        'font-family': 'JetBrains Mono, monospace',
+        'font-size': '10',
+        'letter-spacing': '0.08em'
+      });
+      pastLabel.textContent = 'PAST';
+      svg.appendChild(pastLabel);
+
+      // "Present" label
+      const presentLabel = svgEl('text', {
+        x: arrowX2, y: arrowY - 7,
+        'text-anchor': 'end',
+        fill: '#4A5568',
+        'font-family': 'JetBrains Mono, monospace',
+        'font-size': '10',
+        'letter-spacing': '0.08em'
+      });
+      presentLabel.textContent = 'PRESENT';
+      svg.appendChild(presentLabel);
+    }
 
     // ── Shape description ──
     let descEl = document.getElementById('skill-shape-desc');

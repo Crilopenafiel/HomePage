@@ -64,14 +64,19 @@
         <span></span><span></span><span></span>
       </button>
       <ul class="nav-links" id="nav-links" role="list">
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Expertise</a></li>
-        <li><a href="#timeline">Career</a></li>
-        <li><a href="#map">Global</a></li>
-        <li><a href="#publications">Research</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#values">Values</a></li>
-        <li><a href="#contact" class="nav-cta">Connect</a></li>
+        <li><a href="#about" data-i18n="nav.about">About</a></li>
+        <li><a href="#skills" data-i18n="nav.expertise">Expertise</a></li>
+        <li><a href="#timeline" data-i18n="nav.career">Career</a></li>
+        <li><a href="#map" data-i18n="nav.global">Global</a></li>
+        <li><a href="#publications" data-i18n="nav.research">Research</a></li>
+        <li><a href="#education" data-i18n="nav.education">Education</a></li>
+        <li><a href="#values" data-i18n="nav.values">Values</a></li>
+        <li><a href="#contact" class="nav-cta" data-i18n="nav.connect">Connect</a></li>
+        <li class="lang-toggle" role="group" aria-label="Language selector">
+          <button type="button" class="lang-btn active" data-lang="en" aria-pressed="true">EN</button>
+          <button type="button" class="lang-btn" data-lang="es" aria-pressed="false">ES</button>
+          <button type="button" class="lang-btn" data-lang="fr" aria-pressed="false">FR</button>
+        </li>
       </ul>
     </div>
   </nav>
@@ -82,15 +87,15 @@
     <section id="hero" aria-label="Hero">
       <canvas id="particle-canvas" aria-hidden="true"></canvas>
       <div class="hero-content">
-        <p class="hero-eyebrow" data-aos>Where businesses and industries meet machine intelligence.</p>
+        <p class="hero-eyebrow" data-aos data-i18n="hero.eyebrow">Where businesses and industries meet machine intelligence.</p>
         <h1 class="hero-name" data-aos data-aos-delay="100">
           <span>Cristián</span>
           <span>López</span>
         </h1>
-        <p class="hero-role" data-aos data-aos-delay="200">Senior Digital Analytics &amp; OT Leader</p>
-        <p class="hero-tagline" data-aos data-aos-delay="300">Heavy Industries x AI x Transformation</p>
+        <p class="hero-role" data-aos data-aos-delay="200" data-i18n="hero.role">Senior Digital Analytics &amp; OT Leader</p>
+        <p class="hero-tagline" data-aos data-aos-delay="300" data-i18n="hero.tagline">Heavy Industries x AI x Transformation</p>
         <a href="#about" class="hero-scroll" data-aos data-aos-delay="400" aria-label="Scroll to About">
-          <span>Explore</span>
+          <span data-i18n="hero.explore">Explore</span>
           <svg width="16" height="24" viewBox="0 0 16 24" fill="none" aria-hidden="true">
             <path d="M8 0v20M1 13l7 7 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
           </svg>
@@ -109,33 +114,33 @@
             </div>
           </div>
           <div class="about-content-col" data-aos data-aos-delay="150">
-            <span class="eyebrow">About</span>
-            <h2 id="about-heading">A leader at the intersection of where businesses<br>and industries meet machine intelligence.</h2>
-            <p class="about-narrative">
+            <span class="eyebrow" data-i18n="about.eyebrow">About</span>
+            <h2 id="about-heading" data-i18n-html="about.heading">A leader at the intersection of where businesses<br>and industries meet machine intelligence.</h2>
+            <p class="about-narrative" data-i18n="about.p1">
               Born in Chile and forged in the world's most demanding and complex mining operations, I have spent 14 years translating the language of mining and processing ore bodies into the language of algorithms. I have led digital transformation at two of the planet's largest mining companies, Glencore and Codelco, driving complex innovation portfolios and value through AI, advanced analytics, autonomy, electrification, automation, and IT-OT convergence.
             </p>
-            <p class="about-narrative">
+            <p class="about-narrative" data-i18n="about.p2">
               I hold an Australian Global Talent visa, recognition by the Australian Government of exceptional ability in the resources technology sector. My work sits at the rare intersection where engineering rigour meets machine learning possibility, where a decade of operational instinct informs every model I have built with my teams. I lead with curiosity, execute with precision, and believe the most important technology is still the people who use it.
             </p>
-            <p class="about-narrative">
+            <p class="about-narrative" data-i18n="about.p3">
               None of what is written here was achieved alone. Throughout my career, I have been surrounded by highly skilled and capable people who taught me, challenged me, and were patient with my endless questions. I hope that I have also created a positive impact in their lives. They know who they are, and I thank each of them sincerely.
             </p>
             <div class="stat-row">
               <div class="stat-item">
                 <span class="stat-number font-mono" data-count="14" data-suffix="+">0</span>
-                <span class="stat-label">Years Mining &amp; Tech</span>
+                <span class="stat-label" data-i18n="about.stat1">Years Mining &amp; Tech</span>
               </div>
               <div class="stat-item">
                 <span class="stat-number font-mono" data-count="250" data-prefix="$" data-suffix="M+">0</span>
-                <span class="stat-label">Portfolio Value Led</span>
+                <span class="stat-label" data-i18n="about.stat2">Portfolio Value Led</span>
               </div>
               <div class="stat-item">
                 <span class="stat-number font-mono" data-count="20" data-suffix="+">0</span>
-                <span class="stat-label">Transformation Initiatives</span>
+                <span class="stat-label" data-i18n="about.stat3">Transformation Initiatives</span>
               </div>
               <div class="stat-item">
                 <span class="stat-number font-mono" data-count="3">0</span>
-                <span class="stat-label">Languages (ES · EN · FR)</span>
+                <span class="stat-label" data-i18n="about.stat4">Languages (ES · EN · FR)</span>
               </div>
             </div>
           </div>
@@ -536,6 +541,16 @@
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
   <!-- App Scripts -->
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/i18n-en.js"></script>
+  <script src="assets/js/i18n-es.js"></script>
+  <script src="assets/js/i18n-es-2.js"></script>
+  <script src="assets/js/i18n-es-3.js"></script>
+  <script src="assets/js/i18n-es-4.js"></script>
+  <script src="assets/js/i18n-fr.js"></script>
+  <script src="assets/js/i18n-fr-2.js"></script>
+  <script src="assets/js/i18n-fr-3.js"></script>
+  <script src="assets/js/i18n-fr-4.js"></script>
   <script src="assets/js/main.js"></script>
   <script src="assets/js/skills.js"></script>
   <script src="assets/js/map.js"></script>

@@ -25,10 +25,10 @@
 
     // About
     'about.eyebrow': 'About',
-    'about.heading': 'Turning complex operations into high-performance systems.',
-    'about.p1': "Born in Chile and forged in some of the world's most complex mining operations, I have spent 14 years turning industrial systems into high-performance, data-driven operations. I have led digital transformation across Glencore and Codelco, delivering AI, advanced analytics, autonomy, electrification, automation, and IT/OT convergence across large-scale mining and processing environments.",
-    'about.p2': 'My work sits at the intersection of engineering rigour and machine intelligence, where operational reality informs every model, system, and decision framework I help build with teams. I lead with curiosity, execute with precision, and believe the most important technology is still the people who use it.',
-    'about.p3': 'None of what is written here was achieved alone. Throughout my career, I have been surrounded by highly skilled people who taught me, challenged me, and worked alongside me. I hope that I have also created a positive impact in their lives. They know who they are, and I thank each of them sincerely.',
+    'about.heading': 'A leader at the intersection of where businesses<br>and industries meet machine intelligence.',
+    'about.p1': "Born in Chile and forged in the world's most demanding and complex mining operations, I have spent 14 years translating the language of mining and processing ore bodies into the language of algorithms. I have led digital transformation at two of the planet's largest mining companies, Glencore and Codelco, driving complex innovation portfolios and value through AI, advanced analytics, autonomy, electrification, automation, and IT-OT convergence.",
+    'about.p2': 'I hold an Australian Global Talent visa, recognition by the Australian Government of exceptional ability in the resources technology sector. My work sits at the rare intersection where engineering rigour meets machine learning possibility, where a decade of operational instinct informs every model I have built with my teams. I lead with curiosity, execute with precision, and believe the most important technology is still the people who use it.',
+    'about.p3': 'None of what is written here was achieved alone. Throughout my career, I have been surrounded by highly skilled and capable people who taught me, challenged me, and were patient with my endless questions. I hope that I have also created a positive impact in their lives. They know who they are, and I thank each of them sincerely.',
     'about.stat1': 'Years Mining & Tech',
     'about.stat2': 'Portfolio Value Led',
     'about.stat3': 'Transformation Initiatives',

@@ -38,7 +38,7 @@
     },
     comb: {
       hasBreadth: true,
-      label: 'My profile showing multiple deep expertise domains combined with broad cross-disciplinary knowledge.',
+      label: 'Multiple deep expertise domains combined with broad cross-disciplinary knowledge. Cristián\'s profile.',
       teeth: [
         {
           id: 'mining',
@@ -47,9 +47,9 @@
           color: '#1B5E82',
           tooltipTitle: 'Mining & Metallurgy',
           tooltipItems: [
-            'Bachelor of Engineering (Mining & Metallurgy) and Geomechanics specialisation, Universidad de Chile',
+            'Bachelor of Engineering, Universidad de Chile',
             'Truck dispatch system at Antofagasta PLC (−18% idle time)',
-            'Predictive rock fragmentation through Synthetic Rock Mass (SRM) and geomechanical modelling'
+            'Synthetic Rock Mass modelling at El Teniente'
           ]
         },
         {
@@ -59,11 +59,9 @@
           color: '#00BFA6',
           tooltipTitle: 'Software Engineering & Architecture',
           tooltipItems: [
-            'Master of Information Systems, University of Melbourne',
-            'ANZ Innovation Hackathon Winner 2016',
-            'Cloud-based SaaS platform for heavy vehicle logistics (Tiger Spider)',
-            'HVTT15 paper on cloud computing for vehicle optimisation',
-            'Mi Codelco app: released across all operations within 72 hours to enforce HSEC and COVID-19 safety protocols digitally'
+            'Master of Information Systems (University of Melbourne) and winner of ANZ Innovation Hackathon 2016.',
+            'Led cloud-based multi-body dynamics SaaS platform for heavy vehicle logistics at Tiger Spider. Presented at HVTT15 (Rotterdam) on cloud computing for heavy vehicle optimisation.',
+            'Development of Mi Codelco mobile app during COVID-19, deployed across all Codelco operations within 72 hours to manage HSEC protocols digitally.'
           ]
         },
         {
@@ -73,10 +71,9 @@
           color: '#00A688',
           tooltipTitle: 'AI / Machine Learning / Advanced Analytics',
           tooltipItems: [
-            'Metal uplift via ML prescriptive models at concentrators, smelters, and haul-loading',
-            'Virtual sensing and digital twinning using Kalman filters, XGBoost, CatBoost',
-            'Surrogate models combined with physical process models',
-            'Advisory systems connected to process control OT layers'
+            'Metal uplift at multiple concentrators, smelters, and haul-and-loading processes using different optimisation heuristics leveraging ML prescriptive modelling.',
+            'Virtual sensing and process digital twinning using surrogate models and inference techniques such as Kalman filters, XGBoost, and CatBoost combined with physical process models.',
+            'Development of multiple advisory systems applied to business and industrial processes, many of them directly connected to process control OT layers.'
           ]
         },
         {
@@ -86,9 +83,9 @@
           color: '#D4812A',
           tooltipTitle: 'Digital Transformation & Change Management',
           tooltipItems: [
-            'Corporate Director, Digital Transformation at Codelco (2019–21)',
-            '$250M+ transformation portfolio across Glencore globally',
-            'Remote Operating Centres: design, optimisation, and commissioning'
+            'Corporate Director of Digital Transformation, Codelco (2019–21).',
+            '$250M+ transformation portfolio across Glencore globally.',
+            'Remote Operating Centres operating model expertise: designing, optimising, and commissioning at different types of operations.'
           ]
         },
         {
@@ -98,9 +95,9 @@
           color: '#B06A1F',
           tooltipTitle: 'Strategic Leadership & Portfolio Management',
           tooltipItems: [
-            'Data governance aligned with strategic routines and steering committees',
-            'Cross-functional teams across three continents, delivering modernisation and optimisation portfolios with measurable financial impact',
-            'Training and coaching senior stakeholders in Industry 5.0'
+            'Embedding data governance principles aligned with strategic routines and steering committees in large organisations using easy-to-understand digital products.',
+            'Led cross-functional teams and managed resources across three continents to deliver modernisation and optimisation portfolios with real financial impact and transferability of knowledge.',
+            'Training and coaching senior stakeholders in Industry 5.0 concepts.'
           ]
         }
       ]
@@ -114,7 +111,7 @@
   const BREADTH_H    = 38;
   const BREADTH_GAP  = 24;
   const LABEL_H      = 44;
-  const SVG_H        = 420;
+  const SVG_H        = 400;
   const MAX_TOOTH_H  = SVG_H - PAD - BREADTH_H - BREADTH_GAP - LABEL_H - PAD;
   const TOOTH_W_MAX  = 100;
   const TOOTH_GAP    = 18;
@@ -170,45 +167,17 @@
         });
       }
 
-      // Breadth label (hoverable)
+      // Breadth label
       const bText = svgEl('text', {
         x: PAD + bw / 2, y: topY + BREADTH_H / 2 + 5,
         'text-anchor': 'middle',
         fill: '#8899AA',
         'font-family': 'JetBrains Mono, monospace',
         'font-size': '11',
-        'letter-spacing': '0.12em',
-        style: 'cursor: pointer'
+        'letter-spacing': '0.12em'
       });
-      bText.textContent = 'BREADTH';
+      bText.textContent = 'BREADTH: Cross-domain knowledge base';
       svg.appendChild(bText);
-
-      // Invisible hover target over the breadth bar
-      const bHit = svgEl('rect', {
-        x: PAD, y: topY,
-        width: bw,
-        height: BREADTH_H,
-        fill: 'transparent',
-        style: 'cursor: pointer'
-      });
-      svg.appendChild(bHit);
-
-      const breadthTooltip = {
-        tooltipTitle: 'Cross-Domain Knowledge Base',
-        tooltipItems: [
-          'IT/OT Convergence',
-          'Cybersecurity',
-          'Agile / Scrum',
-          'Data Governance',
-          'Financial Analysis',
-          'Logistics Optimisation',
-          'Innovation Management'
-        ]
-      };
-      bHit.addEventListener('mouseenter', (e) => showTooltip(breadthTooltip, e));
-      bHit.addEventListener('mouseleave', () => hideTooltip());
-      bRect.addEventListener('mouseenter', (e) => showTooltip(breadthTooltip, e));
-      bRect.addEventListener('mouseleave', () => hideTooltip());
     }
 
     const teethTopY = topY + (shape.hasBreadth ? BREADTH_H + BREADTH_GAP : 0);
@@ -330,9 +299,9 @@
       });
       svg.appendChild(arrowHead);
 
-      // "Past" label (below arrow)
+      // "Past" label
       const pastLabel = svgEl('text', {
-        x: arrowX1, y: arrowY + 14,
+        x: arrowX1, y: arrowY - 7,
         'text-anchor': 'start',
         fill: '#4A5568',
         'font-family': 'JetBrains Mono, monospace',
@@ -342,9 +311,9 @@
       pastLabel.textContent = 'PAST';
       svg.appendChild(pastLabel);
 
-      // "Present" label (below arrow)
+      // "Present" label
       const presentLabel = svgEl('text', {
-        x: arrowX2, y: arrowY + 14,
+        x: arrowX2, y: arrowY - 7,
         'text-anchor': 'end',
         fill: '#4A5568',
         'font-family': 'JetBrains Mono, monospace',

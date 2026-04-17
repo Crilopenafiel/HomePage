@@ -128,52 +128,6 @@
   $$('[data-count]').forEach(el => counterObserver.observe(el));
 
   /* ----------------------------------------------------------------
-     Contact Form (Web3Forms)
-  ---------------------------------------------------------------- */
-  const contactForm = document.getElementById('contact-form');
-  const formResult  = document.getElementById('form-result');
-
-  if (contactForm) {
-    contactForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const btn     = contactForm.querySelector('button[type="submit"]');
-      const btnText = btn.querySelector('span');
-
-      // Require hCaptcha to be completed before submitting
-      const captchaInput = contactForm.querySelector('[name="h-captcha-response"]');
-      if (!captchaInput || !captchaInput.value) {
-        formResult.textContent = 'Please complete the "I am human" verification first.';
-        formResult.className   = 'form-result error';
-        return;
-      }
-
-      btn.disabled        = true;
-      btnText.textContent = 'Sending…';
-
-      try {
-        const res  = await fetch('https://api.web3forms.com/submit', {
-          method: 'POST',
-          body: new FormData(contactForm)
-        });
-        const json = await res.json();
-        if (json.success) {
-          formResult.textContent = 'Message sent. I\'ll be in touch soon.';
-          formResult.className   = 'form-result success';
-          contactForm.reset();
-        } else {
-          throw new Error(json.message);
-        }
-      } catch {
-        formResult.textContent = 'Something went wrong. Please try again.';
-        formResult.className   = 'form-result error';
-      }
-
-      btn.disabled        = false;
-      btnText.textContent = 'Send message';
-    });
-  }
-
-  /* ----------------------------------------------------------------
      Particle System - Canvas 2D
   ---------------------------------------------------------------- */
   if (prefersReducedMotion) return;

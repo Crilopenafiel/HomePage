@@ -47,9 +47,9 @@
           color: '#1B5E82',
           tooltipTitle: 'Mining & Metallurgy',
           tooltipItems: [
-            'Bachelor of Engineering, Universidad de Chile',
+            'Bachelor of Engineering (Mining & Metallurgy) and Geomechanics specialisation, Universidad de Chile',
             'Truck dispatch system at Antofagasta PLC (−18% idle time)',
-            'Synthetic Rock Mass modelling at El Teniente'
+            'Predictive rock fragmentation through Synthetic Rock Mass (SRM) and geomechanical modelling'
           ]
         },
         {
@@ -63,7 +63,7 @@
             'ANZ Innovation Hackathon Winner 2016',
             'Cloud-based SaaS platform for heavy vehicle logistics (Tiger Spider)',
             'HVTT15 paper on cloud computing for vehicle optimisation',
-            'Mi Codelco app: deployed across all operations in 72 hours'
+            'Mi Codelco app: released across all operations within 72 hours to enforce HSEC and COVID-19 safety protocols digitally'
           ]
         },
         {
@@ -99,7 +99,7 @@
           tooltipTitle: 'Strategic Leadership & Portfolio Management',
           tooltipItems: [
             'Data governance aligned with strategic routines and steering committees',
-            'Cross-functional teams across three continents delivering modernisation portfolios',
+            'Cross-functional teams across three continents, delivering modernisation and optimisation portfolios with measurable financial impact',
             'Training and coaching senior stakeholders in Industry 5.0'
           ]
         }
@@ -201,7 +201,6 @@
           'Agile / Scrum',
           'Data Governance',
           'Financial Analysis',
-          'Geomechanics',
           'Logistics Optimisation',
           'Innovation Management'
         ]

@@ -933,7 +933,57 @@ section {
   color: var(--text-muted);
   font-size: 1.05rem;
   line-height: 1.7;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.contact-form {
+  max-width: 540px;
+  margin: 0 auto 2.5rem;
+  text-align: left;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.form-group { margin-bottom: 1rem; }
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  background: var(--slate);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.75rem 1rem;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  transition: border-color var(--transition);
+  outline: none;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder { color: var(--text-faint); }
+
+.contact-form input:focus,
+.contact-form textarea:focus { border-color: var(--teal); }
+
+.contact-form textarea { resize: vertical; min-height: 120px; }
+
+.form-submit { margin-top: 0.5rem; }
+
+.form-result {
+  font-size: 0.875rem;
+  margin-top: 0.75rem;
+  min-height: 1.25rem;
+}
+.form-result.success { color: var(--teal); }
+.form-result.error   { color: var(--copper); }
+
+@media (max-width: 540px) {
+  .form-row { grid-template-columns: 1fr; }
 }
 
 .cta-btn {

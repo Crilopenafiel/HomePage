@@ -138,7 +138,16 @@
       e.preventDefault();
       const btn     = contactForm.querySelector('button[type="submit"]');
       const btnText = btn.querySelector('span');
-      btn.disabled      = true;
+
+      // Require hCaptcha to be completed before submitting
+      const captchaInput = contactForm.querySelector('[name="h-captcha-response"]');
+      if (!captchaInput || !captchaInput.value) {
+        formResult.textContent = 'Please complete the "I am human" verification first.';
+        formResult.className   = 'form-result error';
+        return;
+      }
+
+      btn.disabled        = true;
       btnText.textContent = 'Sending…';
 
       try {

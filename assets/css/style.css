@@ -233,6 +233,62 @@ section {
 .nav-hamburger.open span:nth-child(2) { opacity: 0; }
 .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
+/* ----- GTranslate widget (Language Chooser) theming ----- */
+.nav-lang {
+  display: flex;
+  align-items: center;
+  margin-left: 0.35rem;
+}
+.gtranslate_wrapper {
+  display: inline-flex;
+  align-items: center;
+}
+.gtranslate_wrapper .gt_container-lc-float {
+  position: static !important;
+}
+.gtranslate_wrapper .gt_languages-lc {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.25rem 0.6rem;
+  font-family: var(--font-mono);
+}
+.gtranslate_wrapper a,
+.gtranslate_wrapper .gt-selected,
+.gtranslate_wrapper .gt_languages-lc a {
+  font-family: var(--font-mono) !important;
+  font-size: 0.75rem !important;
+  font-weight: 600 !important;
+  color: var(--text-muted) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  text-decoration: none !important;
+  padding: 0.15rem 0.4rem !important;
+  border-radius: 4px !important;
+  background: transparent !important;
+  transition: color var(--transition), background var(--transition) !important;
+}
+.gtranslate_wrapper a:hover,
+.gtranslate_wrapper .gt_languages-lc a:hover {
+  color: var(--text) !important;
+  background: rgba(0,191,166,0.12) !important;
+}
+.gtranslate_wrapper .gt-current-lang,
+.gtranslate_wrapper .gt_languages-lc a.gt-current-lang {
+  color: var(--teal) !important;
+  background: rgba(0,191,166,0.1) !important;
+}
+.gtranslate_wrapper img,
+.gtranslate_wrapper .gt_languages-lc img {
+  display: none !important;
+}
+/* Hide the "Powered by" footer label if the widget injects one */
+.gtranslate_wrapper .gt_float_switcher-footer,
+.gtranslate_wrapper .gt-selector { display: none !important; }
+
 /* ----------------------------------------------------------------
    Hero
    ---------------------------------------------------------------- */
@@ -1085,6 +1141,7 @@ section {
   .nav-links.open { display: flex; }
   .nav-links a { font-size: 1rem; padding: 0.6rem 0.75rem; }
   .nav-cta { margin-top: 0.5rem; }
+  .nav-lang { justify-content: center; margin: 0.5rem 0 0; }
 
   .hero-name { font-size: clamp(3rem, 16vw, 5rem); }
 

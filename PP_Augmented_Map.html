@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Polymer Processors — Augmented Process Map v2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0B1220;
+    --bg-2: #131C2E;
+    --bg-3: #1E293B;
+    --bg-cell-off: #131C2E;
+    --line: #233247;
+    --line-2: #334155;
+    --text: #E5EDF7;
+    --text-muted: #93A4BC;
+    --text-dim: #5E708B;
+    --accent: #DC2626;
+    --accent-soft: #7F1D1D;
+
+    --p1: #3B82F6;
+    --p2: #F59E0B;
+    --p3: #10B981;
+
+    --ini-rhythm: #60A5FA;
+    --ini-maint:  #A78BFA;
+    --ini-qual:   #34D399;
+    --ini-energy: #FBBF24;
+    --ini-bpa:    #F472B6;
+    --ini-safety: #F87171;
+    --ini-people: #38BDF8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.45;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background:
+      radial-gradient(ellipse 80% 50% at 20% 0%, #1E293B66 0%, transparent 60%),
+      radial-gradient(ellipse 60% 40% at 90% 100%, #1a2335 0%, transparent 60%),
+      var(--bg);
+    background-attachment: fixed;
+    min-height: 100vh;
+    padding: 28px 24px 48px;
+  }
+
+  .mono { font-family: 'IBM Plex Mono', monospace; }
+  .container { max-width: 1500px; margin: 0 auto; }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin-bottom: 28px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--line);
+  }
+  .header-left .crumb {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-bottom: 10px;
+  }
+  .header-left h1 {
+    font-size: clamp(24px, 3.2vw, 36px);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 6px;
+  }
+  .header-left .sub {
+    color: var(--text-muted);
+    font-size: 13px;
+    max-width: 600px;
+  }
+  .header-right { display: flex; gap: 22px; align-items: flex-end; }
+  .stat-box { text-align: right; }
+  .stat-box .v {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 20px; font-weight: 500;
+    color: var(--text); line-height: 1;
+  }
+  .stat-box .l {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--text-dim);
+    margin-top: 6px;
+  }
+
+  .legend {
+    display: flex; gap: 8px; flex-wrap: wrap;
+    margin-bottom: 22px;
+  }
+  .legend-item {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 11px; border-radius: 4px;
+    border: 1px solid var(--line); background: var(--bg-2);
+    font-size: 11px; font-family: 'IBM Plex Mono', monospace;
+    color: var(--text-muted);
+  }
+  .legend-dot { width: 7px; height: 7px; border-radius: 1px; }
+  .legend-p1 .legend-dot { background: var(--p1); box-shadow: 0 0 6px var(--p1); }
+  .legend-p2 .legend-dot { background: var(--p2); box-shadow: 0 0 6px var(--p2); }
+  .legend-p3 .legend-dot { background: var(--p3); box-shadow: 0 0 6px var(--p3); }
+  .legend-time { color: var(--text-dim); }
+
+  .section-title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin: 24px 0 14px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .section-title::after {
+    content: ''; flex: 1; height: 1px;
+    background: var(--line);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 220px repeat(9, 1fr);
+    gap: 6px;
+  }
+
+  .grid-label-empty {
+    grid-column: 1;
+    border-right: 1px dashed var(--line);
+  }
+
+  .stage-col {
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--line-2);
+    border-radius: 6px;
+    padding: 14px 12px 12px;
+    display: flex;
+    flex-direction: column;
+    min-height: 230px;
+    position: relative;
+    transition: transform 0.15s ease, border-color 0.15s ease;
+  }
+  .stage-col:hover {
+    transform: translateY(-2px);
+    border-color: var(--line-2);
+  }
+  .stage-col.hot {
+    border-top-color: var(--accent);
+    background: linear-gradient(180deg, #2a1818 0%, var(--bg-2) 30%);
+  }
+  .stage-col.hot::before {
+    content: '★';
+    position: absolute;
+    top: 8px; right: 10px;
+    color: var(--accent);
+    font-size: 14px;
+  }
+
+  .stage-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    color: var(--text-dim);
+    letter-spacing: 0.18em;
+    margin-bottom: 4px;
+  }
+  .stage-name {
+    font-size: 14px; font-weight: 600;
+    letter-spacing: -0.01em;
+    margin-bottom: 4px;
+    line-height: 1.15;
+  }
+  .stage-col.hot .stage-name { color: #FCA5A5; }
+  .stage-fte {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px; color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+  .stage-fte .num { color: var(--text); font-weight: 500; }
+  .stage-loss {
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 1.4;
+    margin-bottom: 10px;
+    flex: 1;
+  }
+  .stage-loss strong { color: #FCA5A5; font-weight: 500; }
+  .stage-lever {
+    font-size: 10.5px;
+    color: var(--text);
+    line-height: 1.4;
+    padding-top: 8px;
+    border-top: 1px dashed var(--line);
+    margin-bottom: 10px;
+  }
+  .stage-lever .lbl {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 8px;
+    color: var(--text-dim);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 3px;
+  }
+
+  .phase-pill {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px; font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 3px 7px;
+    border-radius: 3px;
+    border: 1px solid;
+    align-self: flex-start;
+  }
+  .phase-pill.p1 { background: rgba(59,130,246,0.12); border-color: rgba(59,130,246,0.4); color: #93C5FD; }
+  .phase-pill.p2 { background: rgba(245,158,11,0.12); border-color: rgba(245,158,11,0.4); color: #FCD34D; }
+  .phase-pill.p3 { background: rgba(16,185,129,0.12); border-color: rgba(16,185,129,0.4); color: #6EE7B7; }
+  .phase-pill.split12 { background: linear-gradient(90deg, rgba(59,130,246,0.18) 50%, rgba(245,158,11,0.18) 50%); border-color: var(--line-2); color: var(--text); }
+  .phase-pill.split13 { background: linear-gradient(90deg, rgba(59,130,246,0.18) 50%, rgba(16,185,129,0.18) 50%); border-color: var(--line-2); color: var(--text); }
+  .phase-pill.split23 { background: linear-gradient(90deg, rgba(245,158,11,0.18) 50%, rgba(16,185,129,0.18) 50%); border-color: var(--line-2); color: var(--text); }
+  .phase-pill.allphase { background: linear-gradient(90deg, rgba(59,130,246,0.18) 0%, rgba(245,158,11,0.18) 50%, rgba(16,185,129,0.18) 100%); border-color: var(--line-2); color: var(--text); }
+
+  .ini-row {
+    display: grid;
+    grid-template-columns: 220px repeat(9, 1fr);
+    gap: 6px;
+    margin-bottom: 6px;
+  }
+
+  .ini-label {
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-left: 3px solid var(--col, var(--text-dim));
+    position: relative;
+  }
+  .ini-label .ini-tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 8px;
+    color: var(--text-dim);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+  .ini-label .ini-name {
+    font-size: 12.5px; font-weight: 600;
+    letter-spacing: -0.005em;
+    line-height: 1.15;
+    margin-bottom: 5px;
+  }
+  .ini-label .ini-meta {
+    display: flex; gap: 6px; align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .ini-cell {
+    background: var(--bg-cell-off);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    min-height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .ini-cell.active {
+    background: linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.02) 100%);
+    border-color: var(--col);
+  }
+  .ini-cell.active::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--col);
+    opacity: 0.18;
+    border-radius: 3px;
+  }
+  .ini-cell.active::after {
+    content: '';
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--col);
+    box-shadow: 0 0 10px var(--col);
+    z-index: 1;
+  }
+  .ini-cell.lead::after {
+    width: 12px; height: 12px;
+    box-shadow: 0 0 14px var(--col), 0 0 0 3px color-mix(in srgb, var(--col) 35%, transparent);
+  }
+
+  .foot-note {
+    margin-top: 26px;
+    padding: 16px 20px;
+    background: var(--bg-2);
+    border-left: 3px solid var(--accent);
+    border-radius: 4px;
+    color: var(--text-muted);
+    font-size: 12.5px;
+    line-height: 1.55;
+  }
+  .foot-note strong { color: var(--text); font-weight: 500; }
+  .foot-note .nb {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-right: 8px;
+  }
+
+  @media (max-width: 1100px) {
+    .grid, .ini-row {
+      grid-template-columns: 180px repeat(9, minmax(85px, 1fr));
+      overflow-x: auto;
+    }
+    body { overflow-x: auto; }
+    .container { min-width: 1200px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header class="header">
+    <div class="header-left">
+      <div class="crumb">OutpaceOps · Diagnostic Pre-Read · v2</div>
+      <h1>Polymer Processors — Augmented Process Map</h1>
+      <p class="sub">Value stream as vertical columns; cross-cutting initiatives layered horizontally beneath. Each initiative cell highlights the stages it touches; larger glow marks the lead stage.</p>
+    </div>
+    <div class="header-right">
+      <div class="stat-box"><div class="v">55</div><div class="l">Total FTE</div></div>
+      <div class="stat-box"><div class="v">9</div><div class="l">Stages</div></div>
+      <div class="stat-box"><div class="v">7</div><div class="l">Initiatives</div></div>
+      <div class="stat-box"><div class="v">36mo</div><div class="l">Horizon</div></div>
+    </div>
+  </header>
+
+  <div class="legend">
+    <div class="legend-item legend-p1"><div class="legend-dot"></div><span>Phase 1 — Visibility &amp; quick wins</span><span class="legend-time">0–6mo</span></div>
+    <div class="legend-item legend-p2"><div class="legend-dot"></div><span>Phase 2 — Targeted automation</span><span class="legend-time">6–18mo</span></div>
+    <div class="legend-item legend-p3"><div class="legend-dot"></div><span>Phase 3 — Autonomy &amp; integration</span><span class="legend-time">18–36mo</span></div>
+  </div>
+
+  <div class="section-title">VALUE STREAM</div>
+  <div class="grid">
+    <div class="grid-label-empty"></div>
+
+    <div class="stage-col">
+      <div class="stage-num">STAGE 01</div>
+      <div class="stage-name">Inbound logistics</div>
+      <div class="stage-fte"><span class="num">2–3</span> FTE</div>
+      <div class="stage-loss">Manual scheduling, lost dockets, contamination disputes with no evidence trail.</div>
+      <div class="stage-lever"><span class="lbl">Lever</span>RPA + supplier portal; AI agents for quoting / scheduling.</div>
+      <div class="phase-pill p1">P1 · BPA</div>
+    </div>
+
+    <div class="stage-col">
+      <div class="stage-num">STAGE 02</div>
+      <div class="stage-name">Yard receipt &amp; storage</div>
+      <div class="stage-fte"><span class="num">4–6</span> FTE</div>
+      <div class="stage-loss">Bale aging / UV degradation; lost inventory; FILO instead of FIFO.</div>
+      <div class="stage-lever"><span class="lbl">Lever</span>CV-based yard inventory; RFID bale tagging; AGV indoor handling.</div>
+      <div class="phase-pill p2">P2</div>
+    </div>
+
+    <div class="stage-col">
+      <div class="stage-num">STAGE 03</div>
+      <div class="stage-name">Shred / wash / dry</div>
+      <div class="stage-fte"><span class="num">12–18</span> FTE</div>
+      <div class="stage-loss"><strong>#1 yield killer.</strong> Contamination ingress, bag/string wraps, metal hits, wash-water drift.</div>
+      <div class="stage-lever"><span class="lbl">Lever</span>Pre-shred vision sortation; APC on wash &amp; dryer; contamination AI.</div>
+      <div class="phase-pill split12">P1 → P2</div>
+    </div>
+
+    <div class="stage-col hot">
+      <div class="stage-num">STAGE 04</div>
+      <div class="stage-name">Extruder / melting</div>
+      <div class="stage-fte"><span class="num">4–6</span> FTE</div>
+      <div class="stage-loss"><strong>60–70% of plant electricity.</strong> Throughput swings; off-spec at startup / changeover.</div>
+      <div class="stage-lever"><span class="lbl">Lever</span>Closed-loop melt APC; servo/VFD retrofit; predictive maintenance on screw / gearbox.</div>
+      <div class="phase-pill p2">P2 · $$$</div>
+    </div>
+
+    <div class="stage-col">
+      <div class="stage-num">STAGE 05</div>
+      <div class="stage-name">Filtration</div>
+      <div class="stage-fte"><span class="num">1–2</span> FTE</div>
+      <div class="stage-loss">Unplanned screen changes → line stops; quality drift between changes.</div>
+      <div class="stage-lever"><span class="lbl">Lever</span>Predictive screen-change scheduling; auto / continuous changers.</div>
+      <div class="phase-pill p2">P2</div>
+    </div>
+
+    <div class="stage-col">
+      <div class="stage-num">STAGE 06</div>
+      <div class="stage-name">Pelletising</div>
+      <div class="stage-fte"><span class="num">2–3</span> FTE</div>
+      <div class="stage-loss">Off-spec pellets, fines, cutter-blade wear, undersize / oversize at line-speed changes.</div>
+      <div class="stage-lever"><span class="lbl">Lever</span>Inline pellet vision QC; APC coupling extruder + cutter + water bath.</div>
+      <div class="phase-pill p2">P2</div>
+    </div>
+
+    <div class="stage-col">
+      <div class="stage-num">STAGE 07</div>
+      <div class="stage-name">Lab QC</div>
+      <div class="stage-fte"><span class="num">2–3</span> FTE</div>
+      <div class="stage-loss">Sampling lag (1–4 hr) → out-of-spec batches caught after the fact; manual paper logs.</div>
+      <div class="stage-lever"><span class="lbl">Lever</span>LIMS + digital logging (P1); inline NIR + colour AI (P3).</div>
+      <div class="phase-pill split13">P1 → P3</div>
+    </div>
+
+    <div class="stage-col">
+      <div class="stage-num">STAGE 08</div>
+      <div class="stage-name">Packaging</div>
+      <div class="stage-fte"><span class="num">4–6</span> FTE</div>
+      <div class="stage-loss">Manual bag handling = injury risk; weight variance; manual labelling errors.</div>
+      <div class="stage-lever"><span class="lbl">Lever</span>Automated FIBC bagging stations + robotic palletising (mature, fast payback).</div>
+      <div class="phase-pill p2">P2</div>
+    </div>
+
+    <div class="stage-col">
+      <div class="stage-num">STAGE 09</div>
+      <div class="stage-name">Dispatch &amp; sales</div>
+      <div class="stage-fte"><span class="num">3–5</span> FTE</div>
+      <div class="stage-loss">Manual quoting, slow invoicing → working capital tied up; scheduling conflicts.</div>
+      <div class="stage-lever"><span class="lbl">Lever</span>RPA + AI agents for quote-to-cash; route optimisation.</div>
+      <div class="phase-pill p1">P1 · BPA</div>
+    </div>
+  </div>
+
+  <div class="section-title">CROSS-CUTTING INITIATIVES · ALIGNED TO STAGES THEY TOUCH</div>
+
+  <!-- 01 Operating rhythm & MES -->
+  <div class="ini-row" style="--col: var(--ini-rhythm);">
+    <div class="ini-label" style="--col: var(--ini-rhythm);">
+      <div class="ini-tag">INITIATIVE 01</div>
+      <div class="ini-name">Operating rhythm &amp; MES visibility</div>
+      <div class="ini-meta"><div class="phase-pill p1">P1</div><span class="mono" style="font-size:9px;color:var(--text-dim);">Fastest payback</span></div>
+    </div>
+    <div class="ini-cell active lead" style="--col: var(--ini-rhythm);"></div>
+    <div class="ini-cell active" style="--col: var(--ini-rhythm);"></div>
+    <div class="ini-cell active" style="--col: var(--ini-rhythm);"></div>
+    <div class="ini-cell active lead" style="--col: var(--ini-rhythm);"></div>
+    <div class="ini-cell active" style="--col: var(--ini-rhythm);"></div>
+    <div class="ini-cell active" style="--col: var(--ini-rhythm);"></div>
+    <div class="ini-cell active" style="--col: var(--ini-rhythm);"></div>
+    <div class="ini-cell active" style="--col: var(--ini-rhythm);"></div>
+    <div class="ini-cell active" style="--col: var(--ini-rhythm);"></div>
+  </div>
+
+  <!-- 02 Maintenance: CMMS → Predictive -->
+  <div class="ini-row" style="--col: var(--ini-maint);">
+    <div class="ini-label" style="--col: var(--ini-maint);">
+      <div class="ini-tag">INITIATIVE 02</div>
+      <div class="ini-name">Maintenance: CMMS → Predictive</div>
+      <div class="ini-meta"><div class="phase-pill split12">P1 → P2</div></div>
+    </div>
+    <div class="ini-cell" style="--col: var(--ini-maint);"></div>
+    <div class="ini-cell active" style="--col: var(--ini-maint);"></div>
+    <div class="ini-cell active" style="--col: var(--ini-maint);"></div>
+    <div class="ini-cell active lead" style="--col: var(--ini-maint);"></div>
+    <div class="ini-cell active" style="--col: var(--ini-maint);"></div>
+    <div class="ini-cell active" style="--col: var(--ini-maint);"></div>
+    <div class="ini-cell" style="--col: var(--ini-maint);"></div>
+    <div class="ini-cell active" style="--col: var(--ini-maint);"></div>
+    <div class="ini-cell" style="--col: var(--ini-maint);"></div>
+  </div>
+
+  <!-- 03 Quality backbone: LIMS → Inline NIR/AI -->
+  <div class="ini-row" style="--col: var(--ini-qual);">
+    <div class="ini-label" style="--col: var(--ini-qual);">
+      <div class="ini-tag">INITIATIVE 03</div>
+      <div class="ini-name">Quality backbone: LIMS → Inline NIR / AI</div>
+      <div class="ini-meta"><div class="phase-pill split13">P1 → P3</div></div>
+    </div>
+    <div class="ini-cell active" style="--col: var(--ini-qual);"></div>
+    <div class="ini-cell" style="--col: var(--ini-qual);"></div>
+    <div class="ini-cell active" style="--col: var(--ini-qual);"></div>
+    <div class="ini-cell active" style="--col: var(--ini-qual);"></div>
+    <div class="ini-cell" style="--col: var(--ini-qual);"></div>
+    <div class="ini-cell active" style="--col: var(--ini-qual);"></div>
+    <div class="ini-cell active lead" style="--col: var(--ini-qual);"></div>
+    <div class="ini-cell active" style="--col: var(--ini-qual);"></div>
+    <div class="ini-cell active" style="--col: var(--ini-qual);"></div>
+  </div>
+
+  <!-- 04 Energy & APC -->
+  <div class="ini-row" style="--col: var(--ini-energy);">
+    <div class="ini-label" style="--col: var(--ini-energy);">
+      <div class="ini-tag">INITIATIVE 04</div>
+      <div class="ini-name">Energy management &amp; APC</div>
+      <div class="ini-meta"><div class="phase-pill p2">P2</div><span class="mono" style="font-size:9px;color:var(--text-dim);">Biggest $ lever</span></div>
+    </div>
+    <div class="ini-cell" style="--col: var(--ini-energy);"></div>
+    <div class="ini-cell" style="--col: var(--ini-energy);"></div>
+    <div class="ini-cell active" style="--col: var(--ini-energy);"></div>
+    <div class="ini-cell active lead" style="--col: var(--ini-energy);"></div>
+    <div class="ini-cell" style="--col: var(--ini-energy);"></div>
+    <div class="ini-cell active" style="--col: var(--ini-energy);"></div>
+    <div class="ini-cell" style="--col: var(--ini-energy);"></div>
+    <div class="ini-cell" style="--col: var(--ini-energy);"></div>
+    <div class="ini-cell" style="--col: var(--ini-energy);"></div>
+  </div>
+
+  <!-- 05 BPA -->
+  <div class="ini-row" style="--col: var(--ini-bpa);">
+    <div class="ini-label" style="--col: var(--ini-bpa);">
+      <div class="ini-tag">INITIATIVE 05</div>
+      <div class="ini-name">Business process automation (RPA + AI agents)</div>
+      <div class="ini-meta"><div class="phase-pill p1">P1</div></div>
+    </div>
+    <div class="ini-cell active lead" style="--col: var(--ini-bpa);"></div>
+    <div class="ini-cell" style="--col: var(--ini-bpa);"></div>
+    <div class="ini-cell" style="--col: var(--ini-bpa);"></div>
+    <div class="ini-cell" style="--col: var(--ini-bpa);"></div>
+    <div class="ini-cell" style="--col: var(--ini-bpa);"></div>
+    <div class="ini-cell" style="--col: var(--ini-bpa);"></div>
+    <div class="ini-cell active" style="--col: var(--ini-bpa);"></div>
+    <div class="ini-cell" style="--col: var(--ini-bpa);"></div>
+    <div class="ini-cell active lead" style="--col: var(--ini-bpa);"></div>
+  </div>
+
+  <!-- 06 Safety vision (narrow, NOT broad CCTV) -->
+  <div class="ini-row" style="--col: var(--ini-safety);">
+    <div class="ini-label" style="--col: var(--ini-safety);">
+      <div class="ini-tag">INITIATIVE 06</div>
+      <div class="ini-name">Safety &amp; compliance vision <span style="font-size:9px;color:var(--text-dim);font-weight:400;">— hazard zones &amp; PPE only</span></div>
+      <div class="ini-meta"><div class="phase-pill split23">P2 → P3</div></div>
+    </div>
+    <div class="ini-cell" style="--col: var(--ini-safety);"></div>
+    <div class="ini-cell active" style="--col: var(--ini-safety);"></div>
+    <div class="ini-cell active lead" style="--col: var(--ini-safety);"></div>
+    <div class="ini-cell active" style="--col: var(--ini-safety);"></div>
+    <div class="ini-cell" style="--col: var(--ini-safety);"></div>
+    <div class="ini-cell" style="--col: var(--ini-safety);"></div>
+    <div class="ini-cell" style="--col: var(--ini-safety);"></div>
+    <div class="ini-cell active" style="--col: var(--ini-safety);"></div>
+    <div class="ini-cell" style="--col: var(--ini-safety);"></div>
+  </div>
+
+  <!-- 07 Workforce transition & upskilling -->
+  <div class="ini-row" style="--col: var(--ini-people);">
+    <div class="ini-label" style="--col: var(--ini-people);">
+      <div class="ini-tag">INITIATIVE 07</div>
+      <div class="ini-name">Workforce transition &amp; upskilling</div>
+      <div class="ini-meta"><div class="phase-pill allphase">P1–P3</div></div>
+    </div>
+    <div class="ini-cell active" style="--col: var(--ini-people);"></div>
+    <div class="ini-cell active" style="--col: var(--ini-people);"></div>
+    <div class="ini-cell active lead" style="--col: var(--ini-people);"></div>
+    <div class="ini-cell active lead" style="--col: var(--ini-people);"></div>
+    <div class="ini-cell active" style="--col: var(--ini-people);"></div>
+    <div class="ini-cell active" style="--col: var(--ini-people);"></div>
+    <div class="ini-cell active" style="--col: var(--ini-people);"></div>
+    <div class="ini-cell active" style="--col: var(--ini-people);"></div>
+    <div class="ini-cell active" style="--col: var(--ini-people);"></div>
+  </div>
+
+  <div class="foot-note">
+    <span class="nb">NB · CCTV</span><strong>Initiative 06 is intentionally narrow: vision systems at hazard zones and PPE checkpoints, not broad workplace surveillance.</strong> Australian state-based workplace surveillance legislation (NSW Workplace Surveillance Act 2005, VIC/QLD/WA equivalents) requires written notice, written policy, and EBA consultation where applicable. Combining surveillance with role-displacing automation is a textbook industrial-relations trigger and undermines the redeployment narrative that protects RMF grant eligibility. The genuine traceability outcome — knowing which feedstock, shift, run, and operator produced any 1000kg jumbo bag — is delivered by Initiatives 01 and 03 (MES + LIMS + digital work instructions), not by cameras pointed at workers.
+  </div>
+
+</div>
+</body>
+</html>

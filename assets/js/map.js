@@ -11,10 +11,15 @@
   if (typeof L === 'undefined') {
     mapEl.innerHTML = '<ul class="map-fallback" style="padding:1.5rem 0;">' +
       '<li><strong>Brisbane</strong>: Glencore, Senior Manager Digital Analytics & OT</li>' +
-      '<li><strong>Melbourne</strong>: Tiger Spider, Product Manager / University of Melbourne</li>' +
-      '<li><strong>Santiago</strong>: Codelco HQ, Corporate Director Digital Transformation</li>' +
+      '<li><strong>Mt Isa</strong>: Glencore, P150 Program Deployment</li>' +
+      '<li><strong>Melbourne</strong>: Tiger Spider, Product Manager</li>' +
+      '<li><strong>Melbourne</strong>: University of Melbourne, Master of Information Systems</li>' +
+      '<li><strong>Santiago</strong>: Codelco, Corporate Director of Digital Transformation</li>' +
+      '<li><strong>Santiago</strong>: Universidad de Chile, Mining & Metallurgical Engineering</li>' +
+      '<li><strong>Chuquicamata</strong>: Codelco, ML Prescriptive & Ore Traceability Models</li>' +
       '<li><strong>Rancagua</strong>: Codelco El Teniente, Director of Innovation</li>' +
       '<li><strong>Antofagasta</strong>: Antofagasta PLC, Mining & Process Engineer</li>' +
+      '<li><strong>Kolwezi</strong>: Glencore, Mutanda Mine & KCC Mine</li>' +
       '<li><strong>Rotterdam</strong>: HVTT15 Conference, Paper Presentation</li>' +
       '<li><strong>Hangzhou</strong>: FLAC/DEM Symposium, Paper Presentation</li>' +
       '</ul>';
@@ -38,22 +43,52 @@
     {
       name: 'Melbourne',
       country: 'Australia',
-      lat: -37.8136, lng: 144.9631,
-      categories: ['work', 'study'],
-      title: 'Product Manager / Master of Information Systems',
-      org: 'Tiger Spider / University of Melbourne',
-      period: 'Feb 2016 – Dec 2018 / 2015–2016',
-      achievement: 'ANZ Innovation Hackathon Winner 2016. Becas Chile scholarship recipient.'
+      lat: -37.8080, lng: 144.9560,
+      categories: ['work'],
+      title: 'Product Manager',
+      org: 'Tiger Spider',
+      period: 'Feb 2016 – Dec 2018',
+      achievement: 'Led cloud-based multi-body dynamics SaaS platform for heavy vehicle logistics. ANZ Innovation Hackathon Winner 2016.'
+    },
+    {
+      name: 'Melbourne',
+      country: 'Australia',
+      lat: -37.7983, lng: 144.9610,
+      categories: ['study'],
+      title: 'Master of Information Systems',
+      org: 'University of Melbourne',
+      period: '2015 – 2016',
+      achievement: 'Becas Chile scholarship recipient. Full-time postgraduate study in information systems and technology management.'
     },
     {
       name: 'Santiago',
       country: 'Chile',
       lat: -33.4489, lng: -70.6693,
-      categories: ['work', 'study'],
+      categories: ['work'],
       title: 'Corporate Director of Digital Transformation',
-      org: 'Codelco / Universidad de Chile',
+      org: 'Codelco',
       period: 'Dec 2019 – Feb 2021',
-      achievement: '9.7% copper grade uplift via ML prescriptive models at Chuquicamata.'
+      achievement: 'Founded Codelco\'s first corporate data science and data engineering unit.'
+    },
+    {
+      name: 'Santiago',
+      country: 'Chile',
+      lat: -33.4570, lng: -70.6620,
+      categories: ['study'],
+      title: 'Mining & Metallurgical Engineering',
+      org: 'Universidad de Chile',
+      period: '2006 – 2011',
+      achievement: 'Bachelor of Engineering in Mining & Metallurgy with Geomechanics specialisation.'
+    },
+    {
+      name: 'Chuquicamata',
+      country: 'Chile',
+      lat: -22.3167, lng: -68.9333,
+      categories: ['work'],
+      title: 'Corporate Director of Digital Transformation',
+      org: 'Codelco',
+      period: 'Mar 2020 – Sep 2020',
+      achievement: '9.7% copper grade uplift via ML prescriptive and ore traceability models at Chuquicamata Remote Operating Centre.'
     },
     {
       name: 'Rancagua',
@@ -86,6 +121,66 @@
       achievement: 'Field experience in open-pit copper mining operations.'
     },
     {
+      name: 'Kolwezi',
+      country: 'DRC (Congo)',
+      lat: -10.7167, lng: 25.4667,
+      categories: ['work'],
+      title: 'Bottom Up and Operating Model Study',
+      org: 'Mutanda Mine, Glencore',
+      period: '2023',
+      achievement: 'Review of optimal operating model for Mutanda restart.'
+    },
+    {
+      name: 'Kolwezi',
+      country: 'DRC (Congo)',
+      lat: -10.7250, lng: 25.4750,
+      categories: ['work'],
+      title: 'Instrumentation Modernisation & Cybersecurity',
+      org: 'KCC Mine, Glencore',
+      period: '2023',
+      achievement: 'Instrumentation modernisation strategy, gap analysis, and baselining. Mine network improvement and IT/OT cybersecurity programme.'
+    },
+    {
+      name: 'Baar',
+      country: 'Switzerland',
+      lat: 47.1963, lng: 8.5227,
+      categories: ['work'],
+      title: 'Virtual Performance Centre Deployment',
+      org: 'Glencore',
+      period: '2024',
+      achievement: 'Engineering and design of a Virtual Performance Centre for Glencore Copper to promote better decisions, visibility, and governance of digital products.'
+    },
+    {
+      name: 'London',
+      country: 'UK',
+      lat: 51.5074, lng: -0.1278,
+      categories: ['work'],
+      title: 'Copper Management System',
+      org: 'Glencore',
+      period: '2024',
+      achievement: 'Design of data and OT standards for the Copper Management System (CMS).'
+    },
+    {
+      name: 'Mt Isa',
+      country: 'Australia',
+      lat: -20.7256, lng: 139.4927,
+      categories: ['work'],
+      title: 'P150 Program Deployment',
+      org: 'Glencore',
+      period: '2025',
+      achievement: 'Reduction of $150M in OPEX across Metal Assets in Australia.'
+    },
+    {
+      name: 'McArthur River Mine',
+      country: 'Australia',
+      lat: -16.4433, lng: 136.0984,
+      categories: ['work'],
+      title: 'Shutdown Optimisation',
+      org: 'Glencore',
+      period: '2025',
+      achievement: 'Shutdown strategy optimisation for fixed assets at MRM and operational support of OPEX reduction.'
+    },
+    {
       name: 'Rotterdam',
       country: 'Netherlands',
       lat: 51.9244, lng: 4.4777,
@@ -105,36 +200,15 @@
       period: '2013',
       achievement: '"Application of Synthetic Rock Mass at El Teniente Mine"'
     },
-    // ── New Work Markers ──
     {
-      name: 'Chuquicamata',
-      country: 'Chile',
-      lat: -22.3167, lng: -68.9333,
-      categories: ['work'],
-      title: 'ML Prescriptive Models',
+      name: 'Perth',
+      country: 'Australia',
+      lat: -31.9505, lng: 115.8605,
+      categories: ['conference'],
+      title: 'Digital Mines Conference',
       org: 'Codelco',
-      period: '2020',
-      achievement: '9.7% copper grade uplift via ML prescriptive models at Chuquicamata.'
-    },
-    {
-      name: 'Lubin',
-      country: 'Poland',
-      lat: 51.3942, lng: 16.2015,
-      categories: ['work'],
-      title: 'Technology & Innovation Exchange',
-      org: 'Lubin Mine',
-      period: '2019',
-      achievement: 'Visit to Lubin mine for exchange of technological and innovation learnings.'
-    },
-    {
-      name: 'East Providence',
-      country: 'USA',
-      lat: 41.8137, lng: -71.3701,
-      categories: ['work'],
-      title: 'Technological Roadmapping',
-      org: 'Glencore',
-      period: '2022',
-      achievement: 'Technological roadmapping of electronics recycling facility: processing end-of-life electronics, lithium-ion batteries for circular economy, copper-bearing scrap, and other metal-bearing materials.'
+      period: 'Apr 2019',
+      achievement: 'Represented Codelco at the Digital Mines conference in Perth, engaging with industry leaders on digital transformation in mining. Met with the Codelco Shanghai team to align global technology strategy.'
     },
     {
       name: 'Altonorte, Antofagasta',
@@ -157,14 +231,24 @@
       achievement: '2.7% copper grade uplift via ML prescriptive models and Model Predictive Control deployment.'
     },
     {
-      name: 'Kolwezi',
-      country: 'DRC (Congo)',
-      lat: -10.7167, lng: 25.4667,
+      name: 'Lubin',
+      country: 'Poland',
+      lat: 51.3942, lng: 16.2015,
       categories: ['work'],
-      title: 'Instrumentation Modernisation & Cybersecurity',
-      org: 'KCC Mine, Glencore',
-      period: '2023',
-      achievement: 'Instrumentation modernisation strategy, gap analysis, baselining. Mine network improvement and IT/OT cybersecurity program.'
+      title: 'Technology & Innovation Exchange',
+      org: 'Lubin Mine',
+      period: '2019',
+      achievement: 'Visit to Lubin mine for exchange of technological and innovation learnings.'
+    },
+    {
+      name: 'East Providence',
+      country: 'USA',
+      lat: 41.8137, lng: -71.3701,
+      categories: ['work'],
+      title: 'Technological Roadmapping',
+      org: 'Glencore',
+      period: '2022',
+      achievement: 'Technological roadmapping of electronics recycling facility: processing end-of-life electronics, lithium-ion batteries for circular economy, copper-bearing scrap, and other metal-bearing materials.'
     },
     {
       name: 'Montreal',
@@ -196,7 +280,6 @@
       period: '2022',
       achievement: 'Created data science, automation, and data engineering team at Glencore Copper. Executed first short interval control projects for KCC.'
     },
-    // ── New Conference Markers ──
     {
       name: 'Wroclaw',
       country: 'Poland',
@@ -227,7 +310,6 @@
       period: '2024',
       achievement: 'Presented at Mining Indaba conference. Negotiated with regional providers to support the technology strategy in the Africa region.'
     },
-    // ── New Study Markers ──
     {
       name: 'San Jose',
       country: 'USA',
